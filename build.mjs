@@ -17,6 +17,58 @@ const TYPES = {
   state: { label: 'Texas-wide', long: 'Texas company serving Austin' },
   national: { label: 'National', long: 'National provider serving Austin' },
 };
+const AREAS = {
+  central: 'Central & East Austin',
+  south: 'South Austin',
+  north: 'North Austin to Round Rock',
+  west: 'West Austin & Hill Country',
+  hays: 'Buda & San Marcos',
+  outside: 'Elsewhere in Texas',
+};
+
+// Hero illustration: a sun rising behind a row of solar panels.
+function heroArt() {
+  const rays = Array.from({ length: 18 }, (_, i) => `<line x1="400" y1="76" x2="400" y2="${i % 2 ? 48 : 30}" transform="rotate(${i * 20} 400 300)"/>`).join('');
+  const panel = (x, y) => {
+    const w = 168, h = 84, cols = 4, rows = 2;
+    let g = `<g transform="translate(${x} ${y}) skewY(-14)"><rect width="${w}" height="${h}" rx="4" fill="#0d1535" stroke="#9fb0ee" stroke-width="3"/>`;
+    for (let c = 1; c < cols; c++) g += `<line x1="${(w / cols) * c}" y1="0" x2="${(w / cols) * c}" y2="${h}" stroke="#4458b0" stroke-width="2"/>`;
+    for (let r = 1; r < rows; r++) g += `<line x1="0" y1="${(h / rows) * r}" x2="${w}" y2="${(h / rows) * r}" stroke="#4458b0" stroke-width="2"/>`;
+    g += `<rect class="glint" width="${w}" height="${h}" rx="4" fill="url(#glint)"/></g>`;
+    g += `<line x1="${x + 40}" y1="${y + 74}" x2="${x + 40}" y2="${y + 128}" stroke="#9fb0ee" stroke-width="4"/><line x1="${x + 128}" y1="${y + 52}" x2="${x + 128}" y2="${y + 110}" stroke="#9fb0ee" stroke-width="4"/>`;
+    return g;
+  };
+  return `<svg class="hero-art" viewBox="0 0 640 460" aria-hidden="true" focusable="false">
+  <defs><linearGradient id="glint" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".28"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>
+  <g class="sun-rise">
+    <g class="rays" stroke="#ffc531" stroke-width="6" stroke-linecap="round">${rays}</g>
+    <circle cx="400" cy="300" r="200" fill="#ffc531"/>
+  </g>
+  <path d="M0 460V412Q300 356 640 398V460Z" fill="#0f183d"/>
+  ${panel(60, 300)}${panel(250, 268)}${panel(440, 240)}
+</svg>`;
+}
+
+const ICONS = {
+  panel: '<svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="48" cy="14" r="8" fill="#ffc531"/><path d="M8 30h36l8 22H4z" fill="#17224d"/><path d="M26 30v22M6.500 41h43" stroke="#fff" stroke-width="2"/></svg>',
+  inverter: '<svg viewBox="0 0 64 64" aria-hidden="true"><rect x="14" y="8" width="36" height="48" rx="6" fill="#17224d"/><path d="M22 26q5-10 10 0t10 0" fill="none" stroke="#ffc531" stroke-width="3" stroke-linecap="round"/><path d="M22 42h20" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg>',
+  home: '<svg viewBox="0 0 64 64" aria-hidden="true"><path d="M6 30 32 8l26 22" fill="none" stroke="#17224d" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 30v26h36V30" fill="#17224d"/><rect x="27" y="38" width="10" height="18" fill="#ffc531"/></svg>',
+  grid: '<svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 6 20 58M32 6l12 52M16 22h32M12 34h40M24 22l18 24M40 22 22 46" fill="none" stroke="#17224d" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="32" cy="6" r="4" fill="#ffc531"/></svg>',
+};
+
+const calculator = `<div class="calc" data-calc>
+  <label class="calc-size"><span>System size: <strong data-calc-size>7 kW</strong></span>
+    <input type="range" min="3" max="15" step="0.5" value="7" data-calc-input aria-describedby="calc-note">
+  </label>
+  <div class="calc-bar" aria-hidden="true"><span class="calc-range"></span><span class="calc-avg"></span></div>
+  <dl class="figures">
+    <div><dt>At the Austin average</dt><dd data-calc-avg>$19,880</dd></div>
+    <div><dt>Typical range</dt><dd data-calc-range>$15,540–$23,240</dd></div>
+    <div><dt>After the $2,500 rebate</dt><dd data-calc-net>$17,380</dd></div>
+  </dl>
+  <p class="note" id="calc-note">Uses SolarReviews' 2026 Austin figures: $2.84 per watt on average, $2.22 to $3.32 as the typical range. An estimate, not a quote.</p>
+</div>`;
+
 const SERVICE_FILTERS = ['Residential', 'Commercial', 'Battery', 'Repair', 'EV charging'];
 
 const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -32,7 +84,7 @@ function write(path, html) {
   writeFileSync(file, html);
 }
 
-function page({ path, title, description, body, current = '', jsonld = [] }) {
+function page({ path, title, description, body, current = '', jsonld = [], head = '' }) {
   const canonical = SITE + path;
   const nav = [
     ['/#directory', 'Directory', 'directory'],
@@ -58,6 +110,7 @@ function page({ path, title, description, body, current = '', jsonld = [] }) {
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Figtree:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/styles.css">
+${head}
 ${jsonld.map((j) => `<script type="application/ld+json">${JSON.stringify(j).replace(/</g, '\\u003c')}</script>`).join('\n')}
 </head>
 <body>
@@ -97,7 +150,7 @@ const oldest = companies.filter((c) => c.founded).sort((a, b) => a.founded - b.f
 
 function row(c, i) {
   const text = [c.name, c.city, c.usp, c.services.join(' '), TYPES[c.type].label].join(' ').toLowerCase();
-  return `<li class="row" data-type="${c.type}" data-services="|${c.services.join('|')}|" data-name="${esc(c.name)}" data-founded="${c.founded ?? ''}" data-rank="${i}" data-text="${esc(text)}">
+  return `<li class="row" data-type="${c.type}" data-area="${c.area ?? ''}" data-services="|${c.services.join('|')}|" data-name="${esc(c.name)}" data-founded="${c.founded ?? ''}" data-rank="${i}" data-text="${esc(text)}">
   <div>
     <h3><a href="/companies/${c.slug}/">${esc(c.name)}</a></h3>
     <div class="row-meta">
@@ -129,6 +182,7 @@ const faqs = [
 
 const home = `
 <section class="hero">
+  ${heroArt()}
   <div class="wrap">
     <h1>Solar companies in Austin, Texas</h1>
     <p class="lede">${companies.length} installers that serve Austin, compared by age, price level, strengths and how to reach them. No lead forms and no paid rankings.</p>
@@ -148,6 +202,18 @@ const home = `
   <div class="wrap">
     <h2>Find solar companies in Austin</h2>
     <p class="section-intro">Filter by where a company is based and what it does. Austin-area installers come first; open a profile for the address, phone number and website.</p>
+    <div class="map-block">
+      <div class="chip-group">
+        <span class="chips-label" id="lbl-area">Near you</span>
+        <div class="chips" role="group" aria-labelledby="lbl-area">
+          <button class="chip" type="button" data-filter="area" data-value="all" aria-pressed="true">Everywhere</button>
+          ${Object.entries(AREAS).map(([k, v]) => `<button class="chip" type="button" data-filter="area" data-value="${k}" aria-pressed="false">${v}</button>`).join('\n          ')}
+        </div>
+      </div>
+      <div class="map" id="map" role="region" aria-label="Map of solar companies around Austin"><p class="map-fallback">The map could not load. The area buttons above still filter the list.</p></div>
+      <p class="note">Pins mark the approximate area of each office, not the exact building. National providers have no pin.</p>
+    </div>
+    <script type="application/json" id="map-data">${JSON.stringify(companies.filter((c) => c.lat).map((c) => ({ n: c.name, s: c.slug, a: c.area, c: c.city, p: c.phone || '', lat: c.lat, lng: c.lng }))).replace(/</g, '\\u003c')}</script>
     <div class="filters">
       <label class="search"><span>Search by name, city or service</span>
         <input type="search" data-search placeholder="e.g. battery, Buda, repair" autocomplete="off">
@@ -215,6 +281,19 @@ ${companies.filter((c) => c.type === 'local').map((c) => `          <tr><td><a h
   </div>
 </section>
 
+<section class="section" id="how">
+  <div class="wrap">
+    <h2>How a solar home works in Austin</h2>
+    <p class="section-intro">The same four steps apply whichever installer you choose.</p>
+    <ol class="flow">
+      <li>${ICONS.panel}<h3>Panels</h3><p>Sunlight on the roof becomes direct current. Austin gets well over 200 sunny days a year.</p></li>
+      <li>${ICONS.inverter}<h3>Inverter</h3><p>The inverter turns it into the alternating current your home uses.</p></li>
+      <li>${ICONS.home}<h3>Your home</h3><p>Appliances run on solar first. A battery, if you add one, stores the surplus for outages.</p></li>
+      <li>${ICONS.grid}<h3>Austin Energy</h3><p>Austin Energy credits the energy your system produces at its Value of Solar rate instead of net metering.</p></li>
+    </ol>
+  </div>
+</section>
+
 <section class="section section-sky" id="cost">
   <div class="wrap">
     <h2>What solar power companies in Austin, TX charge</h2>
@@ -224,7 +303,9 @@ ${companies.filter((c) => c.type === 'local').map((c) => `          <tr><td><a h
       <div><dt>Typical range per watt</dt><dd>$2.22–$3.32<small>SolarReviews, Austin</small></dd></div>
       <div><dt>Austin Energy rebate</dt><dd>$2,500<small>Residential, via a participating contractor</small></dd></div>
     </dl>
-    <p>A 7 kW system at the average price comes to roughly $19,900 before the rebate. <a href="/solar-cost-austin/">Read the full guide to solar cost and rebates in Austin</a>.</p>
+    <h3 style="margin:2.5rem 0 1rem">Estimate your system price</h3>
+    ${calculator}
+    <p><a href="/solar-cost-austin/">Read the full guide to solar cost and rebates in Austin</a></p>
   </div>
 </section>
 
@@ -236,6 +317,7 @@ ${faqs.map(([q, a]) => `      <details><summary>${esc(q)}</summary><p>${esc(a)}<
     </div>
   </div>
 </section>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin="" defer></script>
 <script src="/assets/app.js" defer></script>
 `;
 
@@ -244,6 +326,7 @@ write('index.html', page({
   title: `Solar Companies in Austin, Texas: ${companies.length} Installers Compared (2026)`,
   description: `Independent directory of solar companies in Austin, TX. Compare ${companies.length} Austin Texas solar companies by founding year, price level, services and contact details.`,
   body: home,
+  head: '<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">',
   jsonld: [
     { '@context': 'https://schema.org', '@type': 'WebSite', name: 'Austin Texas Solar', url: SITE + '/' },
     { '@context': 'https://schema.org', '@type': 'ItemList', name: 'Solar companies in Austin, Texas', numberOfItems: companies.length,
@@ -363,6 +446,8 @@ write('solar-cost-austin/index.html', page({
       </table>
     </div>
     <p class="note">These are arithmetic examples, not quotes. Batteries, roof work and premium panels add to the price.</p>
+    <h3>Estimate your own system</h3>
+    ${calculator}
 
     <h2>The Austin Energy solar rebate</h2>
     <p>Austin Energy pays residential customers a flat $2,500 rebate for a qualifying solar installation. To receive it you must:</p>
@@ -391,7 +476,8 @@ write('solar-cost-austin/index.html', page({
     </ul>
     <p style="margin-top:2rem"><a class="btn btn-ink" href="/#directory">Compare solar companies in Austin</a></p>
   </div>
-</section>`,
+</section>
+<script src="/assets/app.js" defer></script>`,
 }));
 
 // ---------- About ----------

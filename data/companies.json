@@ -1,31 +1,686 @@
 [
-  {"slug":"freedom-solar-power","name":"Freedom Solar Power","type":"local","founded":2007,"tier":3,"tierNote":"About $2.85–$3.20 per watt cash, as reported by a competing installer","usp":"The largest Texas-only installer, founded in Austin and certified for Tesla Powerwall.","about":"Freedom Solar started in Austin in 2007 and grew into the biggest installer based in Texas. It now also sells generators and heating and cooling under the Freedom Power name, and handles large commercial projects.","city":"Austin","address":"4801 Freidrich Ln, Ste 100, Austin, TX 78744","phone":"8335000014","url":"https://freedomsolarpower.com/","services":["Residential","Commercial","Battery","Generators","Repair"],"ratings":["ConsumerAffairs 4.3/5 (339 reviews)"]},
-  {"slug":"longhorn-solar","name":"Longhorn Solar","type":"local","founded":2009,"tier":null,"usp":"Family-owned, with all work done in-house by NABCEP-certified employees.","about":"Longhorn Solar has installed solar and storage in Texas since 2009 from its base in Pflugerville. It backs systems with a 25-year equipment warranty and a 25-year workmanship warranty.","city":"Pflugerville","address":"1421 Wells Branch Pkwy, Ste 110, Pflugerville, TX 78660","phone":"5128374800","url":"https://longhornsolar.com/","services":["Residential","Commercial","Battery","Repair","Financing"],"ratings":["EcoWatch 4.4/5","SolarReviews expert rating: Elite"]},
-  {"slug":"lighthouse-solar","name":"Lighthouse Solar","type":"local","founded":2007,"tier":null,"usp":"A 25-year workmanship guarantee plus a 10-year promise that output reaches 90% of the forecast.","about":"Lighthouse Solar has served the Austin area from South 7th Street since 2007. Beyond rooftop systems it builds solar carports and installs batteries and EV chargers.","city":"Austin","address":"2000 S 7th St, Austin, TX 78704","phone":"5124765555","url":"https://lighthousesolartx.com/","services":["Residential","Commercial","Battery","EV charging","Carports","Repair"],"ratings":["EcoWatch 4.9/5"]},
-  {"slug":"native-solar","name":"NATiVE Solar","type":"local","founded":2007,"tier":null,"usp":"Solar-plus-battery specialists who also take over systems another installer abandoned.","about":"NATiVE Solar works from Dripping Springs, just west of Austin, on homes and businesses across Texas. Repair and long-term maintenance are a core part of its work, with a 10-year workmanship warranty.","city":"Dripping Springs","address":"3998 US-290, Ste D, Dripping Springs, TX 78620","phone":"8552536284","url":"https://nativesolar.com/","services":["Residential","Commercial","Battery","Repair","Maintenance"],"ratings":["EcoWatch 4.6/5"]},
-  {"slug":"512-solar","name":"512 Solar","type":"local","founded":2014,"tier":2,"tierNote":"The company describes its prices as competitive; no per-watt figure is published","usp":"EcoWatch's best local installer for Austin, with a service arm for existing systems.","about":"512 Solar is a small Austin firm founded in 2014. Alongside new installations it troubleshoots, repairs, removes and reinstalls existing arrays, and fits home EV chargers.","city":"Austin","address":"1250 S Capital of Texas Hwy, Bldg 3, Ste 400, Austin, TX 78746","phone":"5123292117","url":"http://512solar.com/","services":["Residential","Commercial","Repair","Maintenance","EV charging"],"ratings":["EcoWatch 5.0/5"]},
-  {"slug":"atx-solar","name":"ATX Solar","type":"local","founded":2019,"tier":null,"usp":"Advertises a record of zero paid change orders and a 30-year workmanship warranty.","about":"ATX Solar is a locally owned installer in downtown Austin. It focuses on residential solar and battery storage and promotes clear, fixed pricing.","city":"Austin","address":"1401 Lavaca St #942, Austin, TX 78701","phone":"5128039652","url":"https://www.goatxsolar.com/","services":["Residential","Battery","Financing"],"ratings":["EcoWatch 4.9/5","EnergySage 4.2/5"]},
-  {"slug":"alba-energy","name":"Alba Energy","type":"local","founded":2013,"tier":null,"usp":"Austin-based with Spanish-language service and offices in five other Texas cities.","about":"Alba Energy has designed and installed residential and commercial systems since 2013. It offers a 10-year workmanship warranty on top of manufacturer coverage.","city":"Austin","address":"1601 Rio Grande St, Ste 300, Austin, TX 78701","phone":"8002383112","email":"info@albaenergy.com","url":"https://albaenergy.com/","services":["Residential","Commercial","Battery","Financing"],"ratings":["SolarReviews 4.1/5 (39 reviews)"]},
-  {"slug":"greenbelt-solar","name":"Greenbelt Solar","type":"local","founded":2009,"tier":2,"tierNote":"The company describes its prices as fair; purchase is upfront only","usp":"Woman-owned, with the same people designing, installing and maintaining systems since 2009.","about":"Greenbelt Solar is a South Austin contractor serving homes, businesses and public buildings across Central Texas. It works in English and Spanish and does not offer financing.","city":"Austin","address":"4808 Broken Bow Pass, Austin, TX 78745","phone":"5127501478","url":"https://greenbeltsolar.com/","services":["Residential","Commercial","Battery"],"ratings":["SolarReviews 4.1/5 (15 reviews)"]},
-  {"slug":"hesolar","name":"HESOLAR","type":"local","founded":2012,"tier":null,"usp":"Run by twin brothers, both master electricians, who work directly with every customer.","about":"HESOLAR is an electrical contractor in Buda that serves only the Greater Austin area. All design, installation and service is done in-house with a 25-year workmanship warranty; it does not offer its own financing.","city":"Buda","address":"100 Precision Dr #202, Buda, TX 78610","phone":"5129216763","email":"info@hesolarllc.com","url":"https://www.hesolarllc.com/","services":["Residential","Commercial","Battery","EV charging","Repair"],"ratings":["Google 5.0/5 (116 reviews)","SolarReviews 4.5/5 (28 reviews)"]},
-  {"slug":"texas-solar-power-company","name":"Texas Solar Power Company","type":"local","founded":1995,"tier":null,"usp":"One of the longest-running solar contractors in Texas, in business since the mid-1990s.","about":"Texas Solar Power Company (TXSPC) works from East Austin on solar design and installation, energy efficiency retrofits and energy management for homes, businesses and institutions.","city":"Austin","address":"6448 E Hwy 290, #C112, Austin, TX 78723","phone":"5124599494","url":"http://www.txspc.com/","services":["Residential","Commercial"],"ratings":["SolarReviews 4.1/5 (21 reviews)"]},
-  {"slug":"meridian-solar","name":"Meridian Solar","type":"local","founded":1999,"tier":null,"usp":"Commercial and utility-scale projects only: development, engineering, construction and financing.","about":"Meridian Solar has built solar projects from Austin since 1999 for companies, government bodies, non-profits and utilities. It is not a residential installer.","city":"Austin","address":"4109 Todd Ln #900, Austin, TX 78744","phone":"5124480055","url":"http://meridiansolar.com/","services":["Commercial"],"ratings":[]},
-  {"slug":"suncharge-solar","name":"Suncharge Solar","type":"local","founded":2018,"tier":1,"tierNote":"The company says it passes on savings from having no sales staff; no per-watt figure is published","usp":"Owner-operated with no sales team, which it says keeps prices low.","about":"Suncharge Solar is a small Austin installer of solar and batteries, managed and operated locally by its owner.","city":"Austin","address":"Austin, TX","phone":"5126219407","services":["Residential","Battery"],"ratings":["EnergySage 4.6/5"]},
-  {"slug":"texas-solar-guys","name":"Texas Solar Guys","type":"local","founded":2015,"tier":null,"usp":"Helps rural customers apply for REAP grants and also repairs existing arrays.","about":"Texas Solar Guys installs and repairs residential and commercial systems from Buda, serving Austin and San Antonio. It also offers reroofing.","city":"Buda","address":"3690 FM 967, Buda, TX 78610","services":["Residential","Commercial","Repair"],"ratings":["Google 5.0/5 (17 reviews)"]},
-  {"slug":"dkd-energy","name":"DKD Energy","type":"local","founded":2013,"tier":null,"usp":"Family-owned and operated, combining solar with roof replacement.","about":"DKD Energy installs residential and commercial solar from southwest Austin and also serves San Antonio. Customers can pay upfront or with a loan.","city":"Austin","address":"12915 Nutty Brown Rd, Austin, TX 78737","services":["Residential","Commercial","Roofing"],"ratings":["SolarReviews 5.0/5 (5 reviews)"]},
-  {"slug":"optimum-solar-usa","name":"Optimum Solar USA","type":"local","founded":null,"tier":null,"usp":"Northeast Austin installer with a large base of Google reviews.","about":"Optimum Solar USA offers consultation, panel installation and help with financing for homeowners in Austin and nearby towns.","city":"Austin","address":"1812 Centre Creek Dr, Ste 215, Austin, TX 78754","phone":"5124890044","url":"https://optimumsolarusa.com/","services":["Residential","Financing"],"ratings":["EcoWatch 4.7/5","Google 4.7/5 (155 reviews)"]},
-  {"slug":"the-american-power-company","name":"The American Power Company","type":"local","founded":null,"tier":null,"usp":"Serves homeowners, businesses and farms from southwest Austin.","about":"The American Power Company installs solar and helps customers arrange financing, with a focus on making systems easy to own.","city":"Austin","address":"8737 State Hwy 71, Austin, TX 78735","phone":"7379001980","url":"http://www.powerbacktothepeople.com/","services":["Residential","Commercial","Financing"],"ratings":["EcoWatch 4.7/5"]},
-  {"slug":"austin-discount-solar","name":"Austin Discount Solar","type":"local","founded":null,"tier":1,"tierNote":"Positions itself as a discount installer; no per-watt figure is published. Payment is upfront","usp":"Discount positioning, plus removal of existing systems.","about":"Austin Discount Solar designs, installs and removes residential and commercial systems from northwest Austin.","city":"Austin","address":"9600 Great Hills Trl, #150W, Austin, TX 78759","phone":"5123008388","url":"http://www.austindiscountsolar.com/","services":["Residential","Commercial"],"ratings":["EcoWatch 3.0/5"]},
-  {"slug":"greenstar-power","name":"Greenstar Power","type":"region","founded":2016,"tier":null,"usp":"Women-owned and veteran-operated, with 25-year workmanship and roof-penetration warranties.","about":"Greenstar Power is based in Round Rock and installs residential solar, batteries and EV chargers across Texas. Panasonic named it a fastest-growing battery installer in 2021.","city":"Round Rock","address":"1000 Gattis School Rd, Ste 350, Round Rock, TX 78664","phone":"5122537100","url":"https://greenstarpower.com/","services":["Residential","Battery","EV charging","Repair"],"ratings":["EcoWatch 4.7/5"]},
-  {"slug":"abundant-solar","name":"Abundant Solar","type":"region","founded":2012,"tier":null,"usp":"Family business focused on a 25-mile radius around San Marcos.","about":"Abundant Solar installs residential solar, batteries and EV chargers south of Austin. Customers can pay upfront or with a loan.","city":"San Marcos","address":"129 Old Settlers Dr, San Marcos, TX","phone":"2107790424","services":["Residential","Battery","EV charging"],"ratings":["EnergySage 3.8/5"]},
-  {"slug":"solar-centex","name":"Solar CenTex","type":"region","founded":2013,"tier":null,"usp":"Founded by an Army veteran; uses no subcontractors and stresses after-sales support.","about":"Solar CenTex is based in Harker Heights, about an hour north of Austin, and installs grid-tied and battery systems across Central Texas. It also repairs and decommissions systems.","city":"Harker Heights","address":"1901 E FM 2410, Harker Heights, TX 76548","phone":"2543931340","url":"https://www.solarcentex.com/","services":["Residential","Commercial","Battery","Repair"],"ratings":["SolarReviews 4.8/5 (147 reviews)","EcoWatch 4.7/5"]},
-  {"slug":"atma-energy","name":"Atma Energy","type":"region","founded":2020,"tier":null,"usp":"EnergySage's Local Installer of the Year for Texas in 2026.","about":"Atma Energy is headquartered in San Antonio and installs solar and batteries in the Austin and San Antonio areas.","city":"San Antonio","address":"1430 N Flores St, Ste 200, San Antonio, TX 78212","phone":"2102472862","email":"info@atma-energy.com","url":"https://atma-energy.com/","services":["Residential","Battery"],"ratings":["EnergySage 5.0/5 (72 reviews)"]},
-  {"slug":"good-faith-energy","name":"Good Faith Energy","type":"state","founded":2014,"tier":null,"usp":"Every installer is a company employee; more than 3,000 solar projects and 1,600 batteries.","about":"Good Faith Energy is based in the Dallas area and serves Austin, Cedar Park, Georgetown and Leander. It also does roofing and installs Tesla, REC and SPAN equipment.","city":"Addison","address":"4122 Billy Mitchell Dr, Addison, TX 75001","phone":"9727776937","url":"https://goodfaithenergy.com/","services":["Residential","Commercial","Battery","Roofing","EV charging"],"ratings":["Google 4.9/5 (755 reviews)","SolarReviews 4.5/5 (29 reviews)"]},
-  {"slug":"circle-l-solar","name":"Circle L Solar","type":"state","founded":2014,"tier":null,"usp":"Works only in Texas, handling sales through installation itself.","about":"Circle L Solar is a Fort Worth company that lists Austin among its service cities. It offers residential and commercial solar, energy monitoring and EV charging.","city":"Fort Worth","address":"3914 Sandshell Dr, Fort Worth, TX 76137","phone":"8179452011","services":["Residential","Commercial","EV charging"],"ratings":["SolarReviews 4.7/5 (127 reviews)"]},
-  {"slug":"trismart-solar","name":"TriSMART Solar","type":"state","founded":2013,"tier":null,"usp":"Texas-made panels and 25-year warranties covering equipment, workmanship and roof.","about":"TriSMART Solar is a Houston-based residential installer with an Austin office. It is also a roofing contractor. Reviews are mixed across platforms.","city":"Houston","address":"15200 E Hardy Rd, Houston, TX","phone":"8884855551","url":"https://trismartsolar.com/","services":["Residential","Battery","Roofing","Financing"],"ratings":["EnergySage 2.9/5"]},
-  {"slug":"tesla-energy","name":"Tesla Energy","type":"national","founded":null,"tier":1,"tierNote":"Regularly described as among the lowest-priced options; pricing is shown online","usp":"Low prices and an automated online design process, with little customisation.","about":"Tesla sells solar panels, Solar Roof and Powerwall batteries nationwide and is headquartered in Austin. Installation is commonly handled by subcontracted crews.","city":"Austin (headquarters)","address":"","url":"https://www.tesla.com/","services":["Residential","Battery"],"ratings":[]},
-  {"slug":"sunrun","name":"Sunrun","type":"national","founded":null,"tier":3,"tierNote":"National installers are reported to cost roughly 15–25% more than local ones","usp":"The largest US residential solar company, known for leases and power purchase agreements with no money down.","about":"Sunrun offers solar and batteries in the Austin area, mostly through lease and PPA contracts rather than purchases.","city":"Nationwide","address":"","url":"https://www.sunrun.com/","services":["Residential","Battery","Lease / PPA"],"ratings":[]},
-  {"slug":"palmetto","name":"Palmetto","type":"national","founded":2009,"tier":null,"usp":"A national provider with a large volume of marketplace reviews.","about":"Palmetto sells residential solar and batteries across the United States and appears among the top-ranked providers for Austin on the EnergySage marketplace.","city":"Nationwide","address":"","services":["Residential","Battery","Financing"],"ratings":["EnergySage 4.8/5 (887 reviews)"]},
-  {"slug":"project-solar","name":"Project Solar","type":"national","founded":null,"tier":1,"tierNote":"Full-service installation from $1.61 per watt; do-it-yourself kits from $1.26 per watt","usp":"Published online pricing with no sales visits, and a do-it-yourself option.","about":"Project Solar sells streamlined solar installations and DIY kits nationally, aimed at budget-conscious buyers.","city":"Nationwide","address":"","services":["Residential","DIY kits"],"ratings":["ConsumerAffairs 4.4/5 (87 reviews)"]},
-  {"slug":"nuwatt-energy","name":"NuWatt Energy","type":"national","founded":null,"tier":2,"tierNote":"About $2.60–$2.90 per watt cash, according to the company","usp":"Offers cash, loan and lease or PPA options, with NABCEP-certified design.","about":"NuWatt Energy installs residential solar in several states including Texas, with crews serving Austin, Dallas–Fort Worth, Houston and San Antonio.","city":"Nationwide","address":"","url":"https://nuwattenergy.com/","services":["Residential","Battery","Lease / PPA"],"ratings":[]}
+ {
+  "slug": "freedom-solar-power",
+  "name": "Freedom Solar Power",
+  "type": "local",
+  "founded": 2007,
+  "tier": 3,
+  "tierNote": "About $2.85–$3.20 per watt cash, as reported by a competing installer",
+  "usp": "The largest Texas-only installer, founded in Austin and certified for Tesla Powerwall.",
+  "about": "Freedom Solar started in Austin in 2007 and grew into the biggest installer based in Texas. It now also sells generators and heating and cooling under the Freedom Power name, and handles large commercial projects.",
+  "city": "Austin",
+  "address": "4801 Freidrich Ln, Ste 100, Austin, TX 78744",
+  "phone": "8335000014",
+  "url": "https://freedomsolarpower.com/",
+  "services": [
+   "Residential",
+   "Commercial",
+   "Battery",
+   "Generators",
+   "Repair"
+  ],
+  "ratings": [
+   "ConsumerAffairs 4.3/5 (339 reviews)"
+  ],
+  "area": "south",
+  "lat": 30.199,
+  "lng": -97.752
+ },
+ {
+  "slug": "longhorn-solar",
+  "name": "Longhorn Solar",
+  "type": "local",
+  "founded": 2009,
+  "tier": null,
+  "usp": "Family-owned, with all work done in-house by NABCEP-certified employees.",
+  "about": "Longhorn Solar has installed solar and storage in Texas since 2009 from its base in Pflugerville. It backs systems with a 25-year equipment warranty and a 25-year workmanship warranty.",
+  "city": "Pflugerville",
+  "address": "1421 Wells Branch Pkwy, Ste 110, Pflugerville, TX 78660",
+  "phone": "5128374800",
+  "url": "https://longhornsolar.com/",
+  "services": [
+   "Residential",
+   "Commercial",
+   "Battery",
+   "Repair",
+   "Financing"
+  ],
+  "ratings": [
+   "EcoWatch 4.4/5",
+   "SolarReviews expert rating: Elite"
+  ],
+  "area": "north",
+  "lat": 30.441,
+  "lng": -97.672
+ },
+ {
+  "slug": "lighthouse-solar",
+  "name": "Lighthouse Solar",
+  "type": "local",
+  "founded": 2007,
+  "tier": null,
+  "usp": "A 25-year workmanship guarantee plus a 10-year promise that output reaches 90% of the forecast.",
+  "about": "Lighthouse Solar has served the Austin area from South 7th Street since 2007. Beyond rooftop systems it builds solar carports and installs batteries and EV chargers.",
+  "city": "Austin",
+  "address": "2000 S 7th St, Austin, TX 78704",
+  "phone": "5124765555",
+  "url": "https://lighthousesolartx.com/",
+  "services": [
+   "Residential",
+   "Commercial",
+   "Battery",
+   "EV charging",
+   "Carports",
+   "Repair"
+  ],
+  "ratings": [
+   "EcoWatch 4.9/5"
+  ],
+  "area": "south",
+  "lat": 30.248,
+  "lng": -97.765
+ },
+ {
+  "slug": "native-solar",
+  "name": "NATiVE Solar",
+  "type": "local",
+  "founded": 2007,
+  "tier": null,
+  "usp": "Solar-plus-battery specialists who also take over systems another installer abandoned.",
+  "about": "NATiVE Solar works from Dripping Springs, just west of Austin, on homes and businesses across Texas. Repair and long-term maintenance are a core part of its work, with a 10-year workmanship warranty.",
+  "city": "Dripping Springs",
+  "address": "3998 US-290, Ste D, Dripping Springs, TX 78620",
+  "phone": "8552536284",
+  "url": "https://nativesolar.com/",
+  "services": [
+   "Residential",
+   "Commercial",
+   "Battery",
+   "Repair",
+   "Maintenance"
+  ],
+  "ratings": [
+   "EcoWatch 4.6/5"
+  ],
+  "area": "west",
+  "lat": 30.19,
+  "lng": -98.087
+ },
+ {
+  "slug": "512-solar",
+  "name": "512 Solar",
+  "type": "local",
+  "founded": 2014,
+  "tier": 2,
+  "tierNote": "The company describes its prices as competitive; no per-watt figure is published",
+  "usp": "EcoWatch's best local installer for Austin, with a service arm for existing systems.",
+  "about": "512 Solar is a small Austin firm founded in 2014. Alongside new installations it troubleshoots, repairs, removes and reinstalls existing arrays, and fits home EV chargers.",
+  "city": "Austin",
+  "address": "1250 S Capital of Texas Hwy, Bldg 3, Ste 400, Austin, TX 78746",
+  "phone": "5123292117",
+  "url": "http://512solar.com/",
+  "services": [
+   "Residential",
+   "Commercial",
+   "Repair",
+   "Maintenance",
+   "EV charging"
+  ],
+  "ratings": [
+   "EcoWatch 5.0/5"
+  ],
+  "area": "west",
+  "lat": 30.277,
+  "lng": -97.82
+ },
+ {
+  "slug": "atx-solar",
+  "name": "ATX Solar",
+  "type": "local",
+  "founded": 2019,
+  "tier": null,
+  "usp": "Advertises a record of zero paid change orders and a 30-year workmanship warranty.",
+  "about": "ATX Solar is a locally owned installer in downtown Austin. It focuses on residential solar and battery storage and promotes clear, fixed pricing.",
+  "city": "Austin",
+  "address": "1401 Lavaca St #942, Austin, TX 78701",
+  "phone": "5128039652",
+  "url": "https://www.goatxsolar.com/",
+  "services": [
+   "Residential",
+   "Battery",
+   "Financing"
+  ],
+  "ratings": [
+   "EcoWatch 4.9/5",
+   "EnergySage 4.2/5"
+  ],
+  "area": "central",
+  "lat": 30.277,
+  "lng": -97.743
+ },
+ {
+  "slug": "alba-energy",
+  "name": "Alba Energy",
+  "type": "local",
+  "founded": 2013,
+  "tier": null,
+  "usp": "Austin-based with Spanish-language service and offices in five other Texas cities.",
+  "about": "Alba Energy has designed and installed residential and commercial systems since 2013. It offers a 10-year workmanship warranty on top of manufacturer coverage.",
+  "city": "Austin",
+  "address": "1601 Rio Grande St, Ste 300, Austin, TX 78701",
+  "phone": "8002383112",
+  "email": "info@albaenergy.com",
+  "url": "https://albaenergy.com/",
+  "services": [
+   "Residential",
+   "Commercial",
+   "Battery",
+   "Financing"
+  ],
+  "ratings": [
+   "SolarReviews 4.1/5 (39 reviews)"
+  ],
+  "area": "central",
+  "lat": 30.28,
+  "lng": -97.746
+ },
+ {
+  "slug": "greenbelt-solar",
+  "name": "Greenbelt Solar",
+  "type": "local",
+  "founded": 2009,
+  "tier": 2,
+  "tierNote": "The company describes its prices as fair; purchase is upfront only",
+  "usp": "Woman-owned, with the same people designing, installing and maintaining systems since 2009.",
+  "about": "Greenbelt Solar is a South Austin contractor serving homes, businesses and public buildings across Central Texas. It works in English and Spanish and does not offer financing.",
+  "city": "Austin",
+  "address": "4808 Broken Bow Pass, Austin, TX 78745",
+  "phone": "5127501478",
+  "url": "https://greenbeltsolar.com/",
+  "services": [
+   "Residential",
+   "Commercial",
+   "Battery"
+  ],
+  "ratings": [
+   "SolarReviews 4.1/5 (15 reviews)"
+  ],
+  "area": "south",
+  "lat": 30.215,
+  "lng": -97.8
+ },
+ {
+  "slug": "hesolar",
+  "name": "HESOLAR",
+  "type": "local",
+  "founded": 2012,
+  "tier": null,
+  "usp": "Run by twin brothers, both master electricians, who work directly with every customer.",
+  "about": "HESOLAR is an electrical contractor in Buda that serves only the Greater Austin area. All design, installation and service is done in-house with a 25-year workmanship warranty; it does not offer its own financing.",
+  "city": "Buda",
+  "address": "100 Precision Dr #202, Buda, TX 78610",
+  "phone": "5129216763",
+  "email": "info@hesolarllc.com",
+  "url": "https://www.hesolarllc.com/",
+  "services": [
+   "Residential",
+   "Commercial",
+   "Battery",
+   "EV charging",
+   "Repair"
+  ],
+  "ratings": [
+   "Google 5.0/5 (116 reviews)",
+   "SolarReviews 4.5/5 (28 reviews)"
+  ],
+  "area": "hays",
+  "lat": 30.072,
+  "lng": -97.83
+ },
+ {
+  "slug": "texas-solar-power-company",
+  "name": "Texas Solar Power Company",
+  "type": "local",
+  "founded": 1995,
+  "tier": null,
+  "usp": "One of the longest-running solar contractors in Texas, in business since the mid-1990s.",
+  "about": "Texas Solar Power Company (TXSPC) works from East Austin on solar design and installation, energy efficiency retrofits and energy management for homes, businesses and institutions.",
+  "city": "Austin",
+  "address": "6448 E Hwy 290, #C112, Austin, TX 78723",
+  "phone": "5124599494",
+  "url": "http://www.txspc.com/",
+  "services": [
+   "Residential",
+   "Commercial"
+  ],
+  "ratings": [
+   "SolarReviews 4.1/5 (21 reviews)"
+  ],
+  "area": "central",
+  "lat": 30.322,
+  "lng": -97.695
+ },
+ {
+  "slug": "meridian-solar",
+  "name": "Meridian Solar",
+  "type": "local",
+  "founded": 1999,
+  "tier": null,
+  "usp": "Commercial and utility-scale projects only: development, engineering, construction and financing.",
+  "about": "Meridian Solar has built solar projects from Austin since 1999 for companies, government bodies, non-profits and utilities. It is not a residential installer.",
+  "city": "Austin",
+  "address": "4109 Todd Ln #900, Austin, TX 78744",
+  "phone": "5124480055",
+  "url": "http://meridiansolar.com/",
+  "services": [
+   "Commercial"
+  ],
+  "ratings": [],
+  "area": "south",
+  "lat": 30.212,
+  "lng": -97.737
+ },
+ {
+  "slug": "suncharge-solar",
+  "name": "Suncharge Solar",
+  "type": "local",
+  "founded": 2018,
+  "tier": 1,
+  "tierNote": "The company says it passes on savings from having no sales staff; no per-watt figure is published",
+  "usp": "Owner-operated with no sales team, which it says keeps prices low.",
+  "about": "Suncharge Solar is a small Austin installer of solar and batteries, managed and operated locally by its owner.",
+  "city": "Austin",
+  "address": "Austin, TX",
+  "phone": "5126219407",
+  "services": [
+   "Residential",
+   "Battery"
+  ],
+  "ratings": [
+   "EnergySage 4.6/5"
+  ]
+ },
+ {
+  "slug": "texas-solar-guys",
+  "name": "Texas Solar Guys",
+  "type": "local",
+  "founded": 2015,
+  "tier": null,
+  "usp": "Helps rural customers apply for REAP grants and also repairs existing arrays.",
+  "about": "Texas Solar Guys installs and repairs residential and commercial systems from Buda, serving Austin and San Antonio. It also offers reroofing.",
+  "city": "Buda",
+  "address": "3690 FM 967, Buda, TX 78610",
+  "services": [
+   "Residential",
+   "Commercial",
+   "Repair"
+  ],
+  "ratings": [
+   "Google 5.0/5 (17 reviews)"
+  ],
+  "area": "hays",
+  "lat": 30.09,
+  "lng": -97.88
+ },
+ {
+  "slug": "dkd-energy",
+  "name": "DKD Energy",
+  "type": "local",
+  "founded": 2013,
+  "tier": null,
+  "usp": "Family-owned and operated, combining solar with roof replacement.",
+  "about": "DKD Energy installs residential and commercial solar from southwest Austin and also serves San Antonio. Customers can pay upfront or with a loan.",
+  "city": "Austin",
+  "address": "12915 Nutty Brown Rd, Austin, TX 78737",
+  "services": [
+   "Residential",
+   "Commercial",
+   "Roofing"
+  ],
+  "ratings": [
+   "SolarReviews 5.0/5 (5 reviews)"
+  ],
+  "area": "west",
+  "lat": 30.18,
+  "lng": -97.97
+ },
+ {
+  "slug": "optimum-solar-usa",
+  "name": "Optimum Solar USA",
+  "type": "local",
+  "founded": null,
+  "tier": null,
+  "usp": "Northeast Austin installer with a large base of Google reviews.",
+  "about": "Optimum Solar USA offers consultation, panel installation and help with financing for homeowners in Austin and nearby towns.",
+  "city": "Austin",
+  "address": "1812 Centre Creek Dr, Ste 215, Austin, TX 78754",
+  "phone": "5124890044",
+  "url": "https://optimumsolarusa.com/",
+  "services": [
+   "Residential",
+   "Financing"
+  ],
+  "ratings": [
+   "EcoWatch 4.7/5",
+   "Google 4.7/5 (155 reviews)"
+  ],
+  "area": "north",
+  "lat": 30.345,
+  "lng": -97.67
+ },
+ {
+  "slug": "the-american-power-company",
+  "name": "The American Power Company",
+  "type": "local",
+  "founded": null,
+  "tier": null,
+  "usp": "Serves homeowners, businesses and farms from southwest Austin.",
+  "about": "The American Power Company installs solar and helps customers arrange financing, with a focus on making systems easy to own.",
+  "city": "Austin",
+  "address": "8737 State Hwy 71, Austin, TX 78735",
+  "phone": "7379001980",
+  "url": "http://www.powerbacktothepeople.com/",
+  "services": [
+   "Residential",
+   "Commercial",
+   "Financing"
+  ],
+  "ratings": [
+   "EcoWatch 4.7/5"
+  ],
+  "area": "west",
+  "lat": 30.24,
+  "lng": -97.88
+ },
+ {
+  "slug": "austin-discount-solar",
+  "name": "Austin Discount Solar",
+  "type": "local",
+  "founded": null,
+  "tier": 1,
+  "tierNote": "Positions itself as a discount installer; no per-watt figure is published. Payment is upfront",
+  "usp": "Discount positioning, plus removal of existing systems.",
+  "about": "Austin Discount Solar designs, installs and removes residential and commercial systems from northwest Austin.",
+  "city": "Austin",
+  "address": "9600 Great Hills Trl, #150W, Austin, TX 78759",
+  "phone": "5123008388",
+  "url": "http://www.austindiscountsolar.com/",
+  "services": [
+   "Residential",
+   "Commercial"
+  ],
+  "ratings": [
+   "EcoWatch 3.0/5"
+  ],
+  "area": "north",
+  "lat": 30.395,
+  "lng": -97.75
+ },
+ {
+  "slug": "greenstar-power",
+  "name": "Greenstar Power",
+  "type": "region",
+  "founded": 2016,
+  "tier": null,
+  "usp": "Women-owned and veteran-operated, with 25-year workmanship and roof-penetration warranties.",
+  "about": "Greenstar Power is based in Round Rock and installs residential solar, batteries and EV chargers across Texas. Panasonic named it a fastest-growing battery installer in 2021.",
+  "city": "Round Rock",
+  "address": "1000 Gattis School Rd, Ste 350, Round Rock, TX 78664",
+  "phone": "5122537100",
+  "url": "https://greenstarpower.com/",
+  "services": [
+   "Residential",
+   "Battery",
+   "EV charging",
+   "Repair"
+  ],
+  "ratings": [
+   "EcoWatch 4.7/5"
+  ],
+  "area": "north",
+  "lat": 30.495,
+  "lng": -97.66
+ },
+ {
+  "slug": "abundant-solar",
+  "name": "Abundant Solar",
+  "type": "region",
+  "founded": 2012,
+  "tier": null,
+  "usp": "Family business focused on a 25-mile radius around San Marcos.",
+  "about": "Abundant Solar installs residential solar, batteries and EV chargers south of Austin. Customers can pay upfront or with a loan.",
+  "city": "San Marcos",
+  "address": "129 Old Settlers Dr, San Marcos, TX",
+  "phone": "2107790424",
+  "services": [
+   "Residential",
+   "Battery",
+   "EV charging"
+  ],
+  "ratings": [
+   "EnergySage 3.8/5"
+  ],
+  "area": "hays",
+  "lat": 29.88,
+  "lng": -97.94
+ },
+ {
+  "slug": "solar-centex",
+  "name": "Solar CenTex",
+  "type": "region",
+  "founded": 2013,
+  "tier": null,
+  "usp": "Founded by an Army veteran; uses no subcontractors and stresses after-sales support.",
+  "about": "Solar CenTex is based in Harker Heights, about an hour north of Austin, and installs grid-tied and battery systems across Central Texas. It also repairs and decommissions systems.",
+  "city": "Harker Heights",
+  "address": "1901 E FM 2410, Harker Heights, TX 76548",
+  "phone": "2543931340",
+  "url": "https://www.solarcentex.com/",
+  "services": [
+   "Residential",
+   "Commercial",
+   "Battery",
+   "Repair"
+  ],
+  "ratings": [
+   "SolarReviews 4.8/5 (147 reviews)",
+   "EcoWatch 4.7/5"
+  ],
+  "area": "outside",
+  "lat": 31.07,
+  "lng": -97.66
+ },
+ {
+  "slug": "atma-energy",
+  "name": "Atma Energy",
+  "type": "region",
+  "founded": 2020,
+  "tier": null,
+  "usp": "EnergySage's Local Installer of the Year for Texas in 2026.",
+  "about": "Atma Energy is headquartered in San Antonio and installs solar and batteries in the Austin and San Antonio areas.",
+  "city": "San Antonio",
+  "address": "1430 N Flores St, Ste 200, San Antonio, TX 78212",
+  "phone": "2102472862",
+  "email": "info@atma-energy.com",
+  "url": "https://atma-energy.com/",
+  "services": [
+   "Residential",
+   "Battery"
+  ],
+  "ratings": [
+   "EnergySage 5.0/5 (72 reviews)"
+  ],
+  "area": "outside",
+  "lat": 29.44,
+  "lng": -98.5
+ },
+ {
+  "slug": "good-faith-energy",
+  "name": "Good Faith Energy",
+  "type": "state",
+  "founded": 2014,
+  "tier": null,
+  "usp": "Every installer is a company employee; more than 3,000 solar projects and 1,600 batteries.",
+  "about": "Good Faith Energy is based in the Dallas area and serves Austin, Cedar Park, Georgetown and Leander. It also does roofing and installs Tesla, REC and SPAN equipment.",
+  "city": "Addison",
+  "address": "4122 Billy Mitchell Dr, Addison, TX 75001",
+  "phone": "9727776937",
+  "url": "https://goodfaithenergy.com/",
+  "services": [
+   "Residential",
+   "Commercial",
+   "Battery",
+   "Roofing",
+   "EV charging"
+  ],
+  "ratings": [
+   "Google 4.9/5 (755 reviews)",
+   "SolarReviews 4.5/5 (29 reviews)"
+  ],
+  "area": "outside",
+  "lat": 32.96,
+  "lng": -96.83
+ },
+ {
+  "slug": "circle-l-solar",
+  "name": "Circle L Solar",
+  "type": "state",
+  "founded": 2014,
+  "tier": null,
+  "usp": "Works only in Texas, handling sales through installation itself.",
+  "about": "Circle L Solar is a Fort Worth company that lists Austin among its service cities. It offers residential and commercial solar, energy monitoring and EV charging.",
+  "city": "Fort Worth",
+  "address": "3914 Sandshell Dr, Fort Worth, TX 76137",
+  "phone": "8179452011",
+  "services": [
+   "Residential",
+   "Commercial",
+   "EV charging"
+  ],
+  "ratings": [
+   "SolarReviews 4.7/5 (127 reviews)"
+  ],
+  "area": "outside",
+  "lat": 32.86,
+  "lng": -97.31
+ },
+ {
+  "slug": "trismart-solar",
+  "name": "TriSMART Solar",
+  "type": "state",
+  "founded": 2013,
+  "tier": null,
+  "usp": "Texas-made panels and 25-year warranties covering equipment, workmanship and roof.",
+  "about": "TriSMART Solar is a Houston-based residential installer with an Austin office. It is also a roofing contractor. Reviews are mixed across platforms.",
+  "city": "Houston",
+  "address": "15200 E Hardy Rd, Houston, TX",
+  "phone": "8884855551",
+  "url": "https://trismartsolar.com/",
+  "services": [
+   "Residential",
+   "Battery",
+   "Roofing",
+   "Financing"
+  ],
+  "ratings": [
+   "EnergySage 2.9/5"
+  ],
+  "area": "outside",
+  "lat": 29.94,
+  "lng": -95.33
+ },
+ {
+  "slug": "tesla-energy",
+  "name": "Tesla Energy",
+  "type": "national",
+  "founded": null,
+  "tier": 1,
+  "tierNote": "Regularly described as among the lowest-priced options; pricing is shown online",
+  "usp": "Low prices and an automated online design process, with little customisation.",
+  "about": "Tesla sells solar panels, Solar Roof and Powerwall batteries nationwide and is headquartered in Austin. Installation is commonly handled by subcontracted crews.",
+  "city": "Austin (headquarters)",
+  "address": "",
+  "url": "https://www.tesla.com/",
+  "services": [
+   "Residential",
+   "Battery"
+  ],
+  "ratings": []
+ },
+ {
+  "slug": "sunrun",
+  "name": "Sunrun",
+  "type": "national",
+  "founded": null,
+  "tier": 3,
+  "tierNote": "National installers are reported to cost roughly 15–25% more than local ones",
+  "usp": "The largest US residential solar company, known for leases and power purchase agreements with no money down.",
+  "about": "Sunrun offers solar and batteries in the Austin area, mostly through lease and PPA contracts rather than purchases.",
+  "city": "Nationwide",
+  "address": "",
+  "url": "https://www.sunrun.com/",
+  "services": [
+   "Residential",
+   "Battery",
+   "Lease / PPA"
+  ],
+  "ratings": []
+ },
+ {
+  "slug": "palmetto",
+  "name": "Palmetto",
+  "type": "national",
+  "founded": 2009,
+  "tier": null,
+  "usp": "A national provider with a large volume of marketplace reviews.",
+  "about": "Palmetto sells residential solar and batteries across the United States and appears among the top-ranked providers for Austin on the EnergySage marketplace.",
+  "city": "Nationwide",
+  "address": "",
+  "services": [
+   "Residential",
+   "Battery",
+   "Financing"
+  ],
+  "ratings": [
+   "EnergySage 4.8/5 (887 reviews)"
+  ]
+ },
+ {
+  "slug": "project-solar",
+  "name": "Project Solar",
+  "type": "national",
+  "founded": null,
+  "tier": 1,
+  "tierNote": "Full-service installation from $1.61 per watt; do-it-yourself kits from $1.26 per watt",
+  "usp": "Published online pricing with no sales visits, and a do-it-yourself option.",
+  "about": "Project Solar sells streamlined solar installations and DIY kits nationally, aimed at budget-conscious buyers.",
+  "city": "Nationwide",
+  "address": "",
+  "services": [
+   "Residential",
+   "DIY kits"
+  ],
+  "ratings": [
+   "ConsumerAffairs 4.4/5 (87 reviews)"
+  ]
+ },
+ {
+  "slug": "nuwatt-energy",
+  "name": "NuWatt Energy",
+  "type": "national",
+  "founded": null,
+  "tier": 2,
+  "tierNote": "About $2.60–$2.90 per watt cash, according to the company",
+  "usp": "Offers cash, loan and lease or PPA options, with NABCEP-certified design.",
+  "about": "NuWatt Energy installs residential solar in several states including Texas, with crews serving Austin, Dallas–Fort Worth, Houston and San Antonio.",
+  "city": "Nationwide",
+  "address": "",
+  "url": "https://nuwattenergy.com/",
+  "services": [
+   "Residential",
+   "Battery",
+   "Lease / PPA"
+  ],
+  "ratings": []
+ }
 ]

@@ -17,6 +17,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Figtree:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/styles.css">
 
+
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -67,6 +68,19 @@
       </table>
     </div>
     <p class="note">These are arithmetic examples, not quotes. Batteries, roof work and premium panels add to the price.</p>
+    <h3>Estimate your own system</h3>
+    <div class="calc" data-calc>
+  <label class="calc-size"><span>System size: <strong data-calc-size>7 kW</strong></span>
+    <input type="range" min="3" max="15" step="0.5" value="7" data-calc-input aria-describedby="calc-note">
+  </label>
+  <div class="calc-bar" aria-hidden="true"><span class="calc-range"></span><span class="calc-avg"></span></div>
+  <dl class="figures">
+    <div><dt>At the Austin average</dt><dd data-calc-avg>$19,880</dd></div>
+    <div><dt>Typical range</dt><dd data-calc-range>$15,540–$23,240</dd></div>
+    <div><dt>After the $2,500 rebate</dt><dd data-calc-net>$17,380</dd></div>
+  </dl>
+  <p class="note" id="calc-note">Uses SolarReviews' 2026 Austin figures: $2.84 per watt on average, $2.22 to $3.32 as the typical range. An estimate, not a quote.</p>
+</div>
 
     <h2>The Austin Energy solar rebate</h2>
     <p>Austin Energy pays residential customers a flat $2,500 rebate for a qualifying solar installation. To receive it you must:</p>
@@ -96,6 +110,7 @@
     <p style="margin-top:2rem"><a class="btn btn-ink" href="/#directory">Compare solar companies in Austin</a></p>
   </div>
 </section>
+<script src="/assets/app.js" defer></script>
 </main>
 <footer class="site-foot">
   <div class="wrap">
