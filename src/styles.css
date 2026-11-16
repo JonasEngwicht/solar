@@ -189,7 +189,7 @@ td.num, th.num { font-variant-numeric: tabular-nums; }
 }
 
 /* Hero illustration */
-.hero-art { position: absolute; z-index: 0; right: -3%; bottom: 0; width: min(54vw, 660px); height: auto; overflow: visible; }
+.hero-art { position: absolute; z-index: 0; right: -3%; bottom: 0; width: min(54vw, 660px); height: auto; overflow: hidden; display: block; }
 .sun-rise { animation: sun-rise 1.6s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
 .rays { transform-origin: 400px 300px; animation: rays-turn 90s linear infinite; }
 .glint { opacity: 0; animation: glint 8s ease-in-out 2s infinite; }
