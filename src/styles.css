@@ -52,9 +52,9 @@ p { margin: 0 0 1em; max-width: 68ch; }
 .hero .wrap { position: relative; z-index: 1; padding-block: clamp(2.5rem, 7vw, 5rem) clamp(3rem, 8vw, 6rem); }
 .hero::after {
   content: ""; position: absolute; z-index: 0;
-  width: min(62vw, 640px); aspect-ratio: 1; border-radius: 50%;
+  width: min(48vw, 640px); aspect-ratio: 1; border-radius: 50%;
   background: var(--sun);
-  right: -14%; bottom: -58%;
+  right: -12%; bottom: -30vw;
 }
 .hero h1 { max-width: 13ch; }
 .hero .lede { font-size: clamp(1.1rem, 2.2vw, 1.3rem); max-width: 46ch; margin-top: 1.4rem; color: #dfe6f7; }
@@ -68,7 +68,7 @@ p { margin: 0 0 1em; max-width: 68ch; }
 .btn-ink:hover { background: #24337a; }
 .btn-line { border-color: var(--ink); color: var(--ink); background: transparent; }
 .btn-line:hover { background: var(--sky); }
-.hero-facts { display: flex; flex-wrap: wrap; gap: 0.6rem 2.2rem; margin: 2.6rem 0 0; padding: 0; list-style: none; font-size: 0.98rem; color: #dfe6f7; }
+.hero-facts { display: flex; flex-wrap: wrap; gap: 0.6rem 2.2rem; max-width: 30rem; margin: 2.6rem 0 0; padding: 0; list-style: none; font-size: 0.98rem; color: #dfe6f7; }
 .hero-facts strong { color: #fff; font-family: var(--display); font-size: 1.15rem; }
 
 .page-head { background: var(--ink); color: #fff; }
@@ -192,3 +192,6 @@ td.num, th.num { font-variant-numeric: tabular-nums; }
   .nav { gap: 0.2rem 1rem; font-size: 0.92rem; }
   .site-head .wrap { gap: 0.4rem; }
 }
+
+@media (min-width: 1100px) { .hero::after { bottom: -340px; } .hero-facts { max-width: none; } }
+@media (max-width: 700px) { .hero::after { width: 70vw; right: -30%; bottom: -48vw; opacity: 0.9; } .hero-facts { max-width: 15rem; } }
