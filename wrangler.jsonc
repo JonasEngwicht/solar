@@ -1,0 +1,14 @@
+{
+  // Cloudflare Worker "solar": serves the static site in ./public
+  "name": "solar",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": "./public",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  },
+  "routes": [
+    { "pattern": "austintexassolar.com", "custom_domain": true },
+    { "pattern": "www.austintexassolar.com", "custom_domain": true }
+  ]
+}
