@@ -209,7 +209,7 @@ td.num, th.num { font-variant-numeric: tabular-nums; }
 .page-head { position: relative; overflow: hidden; }
 .page-head .wrap { position: relative; z-index: 1; }
 .page-head::after { content: ""; position: absolute; right: -90px; bottom: -150px; width: 300px; aspect-ratio: 1; border-radius: 50%; background: var(--sun); }
-@media (max-width: 760px) { .page-head::after { width: 150px; right: -60px; bottom: -90px; } }
+@media (max-width: 760px) { .page-head::after { width: 110px; right: -50px; bottom: -70px; opacity: 0.9; } }
 
 /* Map */
 .map-block { margin-bottom: 2.2rem; }
