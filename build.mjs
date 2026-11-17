@@ -478,7 +478,7 @@ write('solar-cost-austin/index.html', page({
     <p>Austin Energy does not use traditional net metering. It credits the electricity your system produces at a set Value of Solar rate, which installers reported at about 9.9 cents per kWh in 2026. The rate is reviewed periodically, so check Austin Energy's current rate schedule before estimating your savings.</p>
 
     <h2>Federal tax credit</h2>
-    <p>The 30% federal tax credit for homeowner-owned residential systems ended on December 31, 2025, according to several installer and industry sources. Leased systems and power purchase agreements can still benefit from a separate credit claimed by the provider. Treat any 2026 quote that subtracts 30% for a purchased home system with caution, and confirm your situation with a tax professional.</p>
+    <p>The 30% federal tax credit for homeowner-owned residential systems ended on December 31, 2025, according to several installer and industry sources. Leases and power purchase agreements (PPAs) are different: the company that owns the system can still claim the credit under Section 48E until the end of 2027, so some of that value may appear in the monthly price. Check the contract for who owns the system. Leased systems and power purchase agreements can still benefit from a separate credit claimed by the provider. Treat any 2026 quote that subtracts 30% for a purchased home system with caution, and confirm your situation with a tax professional.</p>
 
     <h2>Why quotes from Austin solar companies differ</h2>
     <ul>
