@@ -116,8 +116,25 @@
     });
     focusMap();
   }
-  if (document.readyState === 'complete') initMap();
-  else window.addEventListener('load', initMap);
+  // The map (Leaflet + OpenStreetMap tiles) loads only after the visitor asks for it.
+  function loadMap() {
+    if (window.L) { initMap(); return; }
+    var css = document.createElement('link');
+    css.rel = 'stylesheet'; css.href = '/assets/leaflet/leaflet.css';
+    document.head.appendChild(css);
+    var js = document.createElement('script');
+    js.src = '/assets/leaflet/leaflet.js';
+    js.onload = initMap;
+    document.head.appendChild(js);
+    try { localStorage.setItem('map-ok', '1'); } catch (e) {}
+  }
+  var mapBtn = document.querySelector('[data-load-map]');
+  if (mapBtn) {
+    mapBtn.addEventListener('click', loadMap);
+    var remembered = false;
+    try { remembered = localStorage.getItem('map-ok') === '1'; } catch (e) {}
+    if (remembered) loadMap();
+  }
 })();
 
 // Cost calculator

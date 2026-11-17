@@ -14,6 +14,9 @@ const PAGE_HASH = new Map(); // url -> content hash, for per-page lastmod
 const NOINDEX = new Set();
 const UPDATED_TEXT = 'November 2026';
 const companies = JSON.parse(readFileSync(join(root, 'data/companies.json'), 'utf8'));
+// Site operator for the legal notice and privacy policy: {"name","street","city","country","email","phone","vatId"?}
+const OP_FILE = join(root, 'data/operator.json');
+const OP = existsSync(OP_FILE) ? JSON.parse(readFileSync(OP_FILE, 'utf8')) : null;
 
 const TYPES = {
   local: { label: 'Austin area', long: 'Based in the Austin area' },
@@ -127,9 +130,8 @@ function page({ path, title, description, body, current = '', jsonld = [], head 
 ${noindex ? '<meta name="robots" content="noindex, follow">' : ''}
 <meta name="theme-color" content="#17224d">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Figtree:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="preload" href="/assets/fonts/figtree.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="/assets/fonts/bricolage.woff" as="font" type="font/woff" crossorigin>
 <link rel="stylesheet" href="/assets/styles.css">
 ${head}
 ${jsonld.map((j) => `<script type="application/ld+json">${JSON.stringify(j).replace(/</g, '\\u003c')}</script>`).join('\n')}
@@ -160,6 +162,7 @@ ${body}
       <a href="/austin-energy-solar-rebate/">Austin Energy solar rebate</a>
       <a href="/value-of-solar-austin-energy/">Value of Solar rate</a>
       <a href="/about/">How this directory works</a>
+      ${OP ? '<a href="/legal-notice/">Legal notice / Impressum</a>\n      <a href="/privacy/">Privacy</a>' : ''}
     </nav>
   </div>
 </footer>
@@ -240,7 +243,7 @@ const home = `
           ${Object.entries(AREAS).map(([k, v]) => `<button class="chip" type="button" data-filter="area" data-value="${k}" aria-pressed="false">${v}</button>`).join('\n          ')}
         </div>
       </div>
-      <div class="map" id="map" role="region" aria-label="Map of solar companies around Austin"><p class="map-fallback">The map could not load. The area buttons above still filter the list.</p></div>
+      <div class="map" id="map" role="region" aria-label="Map of solar companies around Austin"><div class="map-consent"><p><strong>Map of solar companies around Austin</strong></p><p>The map loads its tiles from OpenStreetMap, which then receives your IP address. The area buttons above filter the list without it.</p><button class="btn btn-ink" type="button" data-load-map>Show map</button></div></div>
       <p class="note">Pins mark the approximate area of each office, not the exact building. National providers have no pin.</p>
       <p class="area-guides">Area guides: <a href="/solar-companies/south-austin/">South Austin</a> · <a href="/solar-companies/north-austin-round-rock/">North Austin &amp; Round Rock</a> · <a href="/solar-companies/west-austin-hill-country/">West Austin &amp; Hill Country</a> · <a href="/solar-companies/buda-san-marcos/">Buda, Kyle &amp; San Marcos</a></p>
     </div>
@@ -348,7 +351,6 @@ ${faqs.map(([q, a]) => `      <details><summary>${esc(q)}</summary><p>${esc(a)}<
     </div>
   </div>
 </section>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin="" defer></script>
 <script src="/assets/app.js" defer></script>
 `;
 
@@ -357,7 +359,6 @@ write('index.html', page({
   title: `Solar Companies in Austin, Texas: ${companies.length} Installers Compared (2026)`,
   description: `Independent directory of solar companies in Austin, TX. Compare ${companies.length} Austin Texas solar companies by founding year, price level, services and contact details.`,
   body: home,
-  head: '<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">',
   jsonld: [
     { '@context': 'https://schema.org', '@type': 'WebSite', name: 'Austin Texas Solar', url: SITE + '/' },
     { '@context': 'https://schema.org', '@type': 'Organization', name: 'Austin Texas Solar', url: SITE + '/', logo: SITE + '/favicon.svg',
@@ -443,6 +444,66 @@ for (const c of companies) {
     jsonld: [biz, { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Solar companies in Austin', item: SITE + '/' },
       { '@type': 'ListItem', position: 2, name: c.name, item: `${SITE}/companies/${c.slug}/` } ] }],
+  }));
+}
+
+// ---------- Legal notice (Impressum, § 5 DDG) and privacy policy ----------
+// Built only when data/operator.json exists (see OP near the top of this file).
+if (OP) {
+  const addr = `${esc(OP.name)}<br>${esc(OP.street)}<br>${esc(OP.city)}<br>${esc(OP.country)}`;
+  const contact = `Phone / Telefon: ${esc(OP.phone)}<br>Email / E-Mail: <a href="mailto:${esc(OP.email)}">${esc(OP.email)}</a>`;
+  write('legal-notice/index.html', page({
+    path: '/legal-notice/',
+    title: 'Legal Notice (Impressum) | Austin Texas Solar',
+    description: 'Legal notice and provider identification for austintexassolar.com.',
+    body: `
+<section class="page-head"><div class="wrap"><h1>Legal notice / Impressum</h1></div></section>
+<section class="section"><div class="wrap prose">
+  <h2>Provider / Angaben gemäß § 5 DDG</h2>
+  <p>${addr}</p>
+  <h2>Contact / Kontakt</h2>
+  <p>${contact}</p>
+  ${OP.vatId ? `<h2>VAT ID / Umsatzsteuer-ID</h2><p>${esc(OP.vatId)}</p>` : ''}
+  <h2>Responsible for content / Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
+  <p>${addr}</p>
+  <h2>About this website</h2>
+  <p>Austin Texas Solar is an independent directory. It is not affiliated with Austin Energy or with any company listed, and no company pays to be listed. Details come from public sources and may be out of date; confirm them with the company before you sign anything.</p>
+  <p lang="de">Austin Texas Solar ist ein unabhängiges Verzeichnis. Es besteht keine Verbindung zu Austin Energy oder den gelisteten Unternehmen. Die Angaben stammen aus öffentlichen Quellen und können veraltet sein.</p>
+  <h2>Consumer dispute resolution / Verbraucherstreitbeilegung</h2>
+  <p lang="de">Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+</div></section>`,
+  }));
+  write('privacy/index.html', page({
+    path: '/privacy/',
+    title: 'Privacy Policy | Austin Texas Solar',
+    description: 'How austintexassolar.com handles personal data: hosting, the optional map, contact by email and your rights under the GDPR.',
+    body: `
+<section class="page-head"><div class="wrap"><h1>Privacy policy</h1><p>This website collects as little as possible: no cookies, no analytics, no tracking and no forms.</p></div></section>
+<section class="section"><div class="wrap prose">
+  <h2>1. Who is responsible</h2>
+  <p>${addr}<br>Email: <a href="mailto:${esc(OP.email)}">${esc(OP.email)}</a></p>
+  <p>Because the operator is based in the European Union, the EU General Data Protection Regulation (GDPR) applies.</p>
+
+  <h2>2. Hosting and server logs</h2>
+  <p>The site is delivered by Cloudflare, Inc. (USA) as our processor under a data processing agreement. To deliver and protect the site, Cloudflare processes your IP address, the date and time of the request, the page requested and technical browser details. Legal basis: our legitimate interest in a secure, working website (Art. 6(1)(f) GDPR). For transfers to the United States, Cloudflare is certified under the EU-U.S. Data Privacy Framework and also relies on the EU Standard Contractual Clauses.</p>
+
+  <h2>3. No cookies, analytics or tracking</h2>
+  <p>We do not set cookies and do not use analytics or advertising tools. Fonts and the map library are served from our own domain, so loading a page does not contact Google or other third parties.</p>
+
+  <h2>4. The map (only if you click "Show map")</h2>
+  <p>The interactive map is off until you click "Show map". Only then does your browser load map tiles from the OpenStreetMap Foundation (United Kingdom), which receives your IP address and browser details. Legal basis: your consent (Art. 6(1)(a) GDPR). Your browser remembers this choice in local storage so the map opens on your next visit; you can withdraw it at any time by clearing this site's data in your browser. See the <a href="https://osmfoundation.org/wiki/Privacy_Policy" rel="noopener">OpenStreetMap Foundation privacy policy</a>.</p>
+
+  <h2>5. Contacting us</h2>
+  <p>If you email us, we use your address and message only to reply, and delete them when they are no longer needed (Art. 6(1)(b) or (f) GDPR).</p>
+
+  <h2>6. Links to other websites</h2>
+  <p>Company profiles link to company websites and to sources. Once you follow such a link, that website's own privacy policy applies.</p>
+
+  <h2>7. Your rights</h2>
+  <p>You have the right to access, rectification, erasure, restriction of processing, data portability and objection, and to withdraw consent at any time with effect for the future (Art. 15 to 21 GDPR). You can also complain to a data protection supervisory authority, for example in your country of residence or at our place of business.</p>
+
+  <p class="note">Last updated ${UPDATED_TEXT}.</p>
+</div></section>`,
   }));
 }
 
@@ -887,6 +948,10 @@ mkdirSync(join(out, 'assets'), { recursive: true });
 copyFileSync(join(root, 'src/styles.css'), join(out, 'assets/styles.css'));
 copyFileSync(join(root, 'src/app.js'), join(out, 'assets/app.js'));
 copyFileSync(join(root, 'src/og.jpg'), join(out, 'assets/og.jpg'));
+for (const dir of ['fonts', 'leaflet', 'leaflet/images']) {
+  mkdirSync(join(out, 'assets', dir), { recursive: true });
+  for (const f of readdirSync(join(root, 'src', dir), { withFileTypes: true })) if (f.isFile()) copyFileSync(join(root, 'src', dir, f.name), join(out, 'assets', dir, f.name));
+}
 write(`${INDEXNOW_KEY}.txt`, INDEXNOW_KEY);
 if (existsSync(join(root, 'logos-opt'))) {
   mkdirSync(join(out, 'assets/logos'), { recursive: true });
