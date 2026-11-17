@@ -240,6 +240,7 @@ const home = `
       </div>
       <div class="map" id="map" role="region" aria-label="Map of solar companies around Austin"><p class="map-fallback">The map could not load. The area buttons above still filter the list.</p></div>
       <p class="note">Pins mark the approximate area of each office, not the exact building. National providers have no pin.</p>
+      <p class="area-guides">Area guides: <a href="/solar-companies/south-austin/">South Austin</a> · <a href="/solar-companies/north-austin-round-rock/">North Austin &amp; Round Rock</a> · <a href="/solar-companies/west-austin-hill-country/">West Austin &amp; Hill Country</a> · <a href="/solar-companies/buda-san-marcos/">Buda, Kyle &amp; San Marcos</a></p>
     </div>
     <script type="application/json" id="map-data">${JSON.stringify(companies.filter((c) => c.lat).map((c) => ({ n: c.name, s: c.slug, a: c.area, c: c.city, p: c.phone || '', lat: c.lat, lng: c.lng }))).replace(/</g, '\\u003c')}</script>
     <div class="filters">
@@ -440,6 +441,74 @@ for (const c of companies) {
     jsonld: [biz, { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Solar companies in Austin', item: SITE + '/' },
       { '@type': 'ListItem', position: 2, name: c.name, item: `${SITE}/companies/${c.slug}/` } ] }],
+  }));
+}
+
+// ---------- Area pages ----------
+const AE_AREA_SRC = ['Austin Energy: service area', 'https://austinenergy.com/residential/residential-services'];
+const AREA_PAGES = [
+  { slug: 'south-austin', area: 'south', name: 'South Austin', h1: 'Solar companies in South Austin',
+    places: 'South Austin, Sunset Valley, Manchaca and the 78704, 78745 and 78744 ZIP codes',
+    utility: 'Most homes here are Austin Energy customers, so the $2,500 rebate applies when you hire a participating contractor. Austin Energy lists Sunset Valley and Manchaca in its service area besides the City of Austin.',
+    refs: [AE_AREA_SRC] },
+  { slug: 'north-austin-round-rock', area: 'north', name: 'North Austin, Round Rock and Pflugerville', h1: 'Solar companies in North Austin, Round Rock and Pflugerville',
+    places: 'North Austin, Pflugerville, Round Rock, Cedar Park and Leander',
+    utility: 'This area is split between utilities. Austin Energy serves North Austin and lists Pflugerville and Cedar Park in its service area. Other homes, including much of Round Rock, are on the Oncor network, where Oncor runs its own Residential Solar Program instead of the Austin Energy rebate. Check the utility named on your bill before you compare quotes.',
+    refs: [AE_AREA_SRC, ['SolarReviews: Texas solar incentives', 'https://www.solarreviews.com/solar-incentives/texas'], ['NuWatt: Pflugerville solar costs', 'https://nuwattenergy.com/en/texas/pflugerville-solar-cost-2026']] },
+  { slug: 'west-austin-hill-country', area: 'west', name: 'West Austin and the Hill Country', h1: 'Solar companies in West Austin and the Hill Country',
+    places: 'West Austin, West Lake Hills, Rollingwood, Bee Cave, Lakeway, Oak Hill and Dripping Springs',
+    utility: 'Austin Energy lists Bee Cave, Lakeway, Rollingwood, West Lake Hills and the Village of the Hills in its service area, so the $2,500 rebate is available there. Farther west many homes are served by Pedernales Electric Cooperative, which has no comparable solar rebate.',
+    refs: [AE_AREA_SRC, ['Neuhaus Realty: solar panels guide Austin 2026', 'https://neuhausre.com/guides/solar-panels-guide-austin/']] },
+  { slug: 'buda-san-marcos', area: 'hays', name: 'Buda, Kyle and San Marcos', h1: 'Solar companies in Buda, Kyle and San Marcos',
+    places: 'Buda, Kyle, San Marcos and the rest of Hays County',
+    utility: 'Austin Energy lists Buda in its service area, but many Hays County homes are on Pedernales Electric Cooperative. In San Marcos, the city utility SMTX Utilities offers its own solar rebate of up to $2,500.',
+    refs: [AE_AREA_SRC, ['SolarReviews: Texas solar incentives', 'https://www.solarreviews.com/solar-incentives/texas'], ['EcoWatch: Buda solar incentives', 'https://www.ecowatch.com/solar/incentives/tx/buda']] },
+];
+for (const a of AREA_PAGES) {
+  const list = companies.filter((c) => c.area === a.area);
+  const others = AREA_PAGES.filter((o) => o !== a);
+  write(`solar-companies/${a.slug}/index.html`, page({
+    path: `/solar-companies/${a.slug}/`,
+    title: `${a.h1}, TX (${list.length} Installers, 2026)`,
+    description: `${list.length} solar companies based in ${a.name}, with phone numbers, Austin Energy rebate status and which utility serves the area.`,
+    current: 'directory',
+    body: `
+<section class="page-head">
+  <div class="wrap">
+    <p class="crumbs"><a href="/">Solar companies in Austin</a> / ${esc(a.name)}</p>
+    <h1>${esc(a.h1)}</h1>
+    <p>${list.length} solar companies with an office in ${esc(a.places)}.</p>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap">
+    <div class="callout">
+      <h2>Which utility serves you</h2>
+      <p>${esc(a.utility)}</p>
+    </div>
+    <p class="section-intro" style="margin-top:2rem">These companies are based in or near ${esc(a.name)}. Most Austin installers also work across the whole metro area, so the <a href="/#directory">full directory of Austin solar companies</a> is worth a look too.</p>
+    <ul class="list">
+${list.map(row).join('\n')}
+    </ul>
+    <h2 style="margin-top:2.5rem">Other areas</h2>
+    <ul class="area-links">
+${others.map((o) => `      <li><a href="/solar-companies/${o.slug}/">${esc(o.h1)}</a></li>`).join('\n')}
+      <li><a href="/biggest-solar-companies-austin/">The biggest solar companies in Austin compared</a></li>
+    </ul>
+    <h2 style="margin-top:2.5rem;font-size:1.3rem">Sources</h2>
+    <ul class="sources">
+${a.refs.map(([t, u]) => `      <li><a href="${u}" rel="noopener">${esc(t)}</a></li>`).join('\n')}
+    </ul>
+    <p class="note">Company locations are the office address each company lists. Checked ${UPDATED_TEXT}.</p>
+  </div>
+</section>`,
+    jsonld: [
+      { '@context': 'https://schema.org', '@type': 'ItemList', name: a.h1, numberOfItems: list.length,
+        itemListElement: list.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.name, url: `${SITE}/companies/${c.slug}/` })) },
+      { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Solar companies in Austin', item: `${SITE}/` },
+        { '@type': 'ListItem', position: 2, name: a.name, item: `${SITE}/solar-companies/${a.slug}/` } ] },
+    ],
   }));
 }
 

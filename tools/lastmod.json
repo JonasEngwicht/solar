@@ -1,6 +1,6 @@
 {
  "/": {
-  "hash": "9fcac21a18307c3aafaf85002b39eba8e6122f7d",
+  "hash": "25a9e3466666631ecad1a47e01397884ba9bcdef",
   "date": "2026-11-17"
  },
  "/about/": {
@@ -285,6 +285,22 @@
  },
  "/companies/volthouse-electric/": {
   "hash": "9d7ac1f073402b4501310c713299755259286004",
+  "date": "2026-11-17"
+ },
+ "/solar-companies/buda-san-marcos/": {
+  "hash": "98ce4f417bdf579eae1663fd42490712521ef8fd",
+  "date": "2026-11-17"
+ },
+ "/solar-companies/north-austin-round-rock/": {
+  "hash": "410e849d30ee00196c0ba67bf87ee00c43786eca",
+  "date": "2026-11-17"
+ },
+ "/solar-companies/south-austin/": {
+  "hash": "fabeab84600b6a028784e85b27fdf681d2fc56d6",
+  "date": "2026-11-17"
+ },
+ "/solar-companies/west-austin-hill-country/": {
+  "hash": "d4581e983027127cbe2b9c45632bec42a7b6d18e",
   "date": "2026-11-17"
  },
  "/solar-cost-austin/": {
