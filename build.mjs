@@ -97,7 +97,7 @@ function page({ path, title, description, body, current = '', jsonld = [], head 
   const canonical = SITE + path;
   const nav = [
     ['/#directory', 'Directory', 'directory'],
-    ['/#compare', 'Compare', 'compare'],
+    ['/biggest-solar-companies-austin/', 'Compare', 'big'],
     ['/solar-cost-austin/', 'Cost & rebates', 'cost'],
     ['/about/', 'About', 'about'],
   ];
@@ -143,6 +143,7 @@ ${body}
     </div>
     <nav aria-label="Footer">
       <a href="/#directory">Solar companies in Austin</a>
+      <a href="/biggest-solar-companies-austin/">Biggest solar companies compared</a>
       <a href="/solar-cost-austin/">Solar cost and rebates in Austin</a>
       <a href="/about/">How this directory works</a>
     </nav>
@@ -154,6 +155,7 @@ ${body}
 }
 
 // ---------- Home ----------
+const BIG_SLUGS = ['freedom-solar-power', 'longhorn-solar', 'tesla-energy', 'sunrun', 'palmetto', 'good-faith-energy', 'trismart-solar', 'freedom-forever-texas'];
 const AE_TOTAL = 55; // austinenergy.com participating solar contractors, checked 17 Nov 2026
 const localCount = companies.filter((c) => c.type === 'local').length;
 const oldest = companies.filter((c) => c.founded).sort((a, b) => a.founded - b.founded)[0];
@@ -268,7 +270,7 @@ ${companies.map(row).join('\n')}
 <section class="section section-sky" id="compare">
   <div class="wrap">
     <h2>Austin Texas solar companies compared</h2>
-    <p class="section-intro">The Austin-area installers we have reviewed in detail, side by side. Newly added Austin Energy contractors appear in the directory above and get a row here once reviewed. Price level is shown only where a company publishes prices or states its positioning; everyone else quotes per project.</p>
+    <p class="section-intro">The Austin-area installers we have reviewed in detail, side by side. Newly added Austin Energy contractors appear in the directory above and get a row here once reviewed. Price level is shown only where a company publishes prices or states its positioning; everyone else quotes per project. For warranties and financing of the big names, see <a href="/biggest-solar-companies-austin/">the biggest solar companies in Austin compared</a>.</p>
     <div class="table-scroll">
       <table>
         <thead><tr><th>Company</th><th>Based in</th><th class="num">Founded</th><th>Price level</th><th>Phone</th></tr></thead>
@@ -354,6 +356,7 @@ write('index.html', page({
 for (const c of companies) {
   const others = companies.filter((o) => o.slug !== c.slug && o.type === c.type).slice(0, 5);
   const hasStreet = /\d/.test(c.address || '') && !/PO Box/i.test(c.address || '');
+  const inBig = BIG_SLUGS.includes(c.slug);
   const body = `
 <section class="page-head">
   <div class="wrap">
@@ -375,6 +378,7 @@ for (const c of companies) {
         <div><dt>Services</dt><dd>${c.services.map(esc).join(', ')}</dd></div>
         ${c.ratings.length ? `<div><dt>Ratings elsewhere</dt><dd>${c.ratings.map(esc).join('<br>')}</dd></div>` : ''}
       </dl>
+      ${inBig ? `<p style="margin-top:1.5rem">See how ${esc(c.name)} compares on warranties and financing in <a href="/biggest-solar-companies-austin/">the biggest solar companies in Austin compared</a>.</p>` : ''}
       <h2 style="margin-bottom:1rem;font-size:1.6rem">Before you sign with ${esc(c.name)}</h2>
       <div class="prose">
         <ul>
@@ -422,6 +426,110 @@ for (const c of companies) {
       { '@type': 'ListItem', position: 2, name: c.name, item: `${SITE}/companies/${c.slug}/` } ] }],
   }));
 }
+
+// ---------- Biggest providers compared ----------
+// Facts as published by the companies and by review sites; checked 17 Nov 2026. Sources listed on the page.
+const BIG = [
+  { slug: 'freedom-solar-power', name: 'Freedom Solar Power', founded: '2007', base: 'Austin', crews: 'Own crews, no subcontractors', work: '25 years', panels: '25 years product and performance', roof: '10 years', prod: 'Not stated', pay: [1, 1, 1, 1] },
+  { slug: 'longhorn-solar', name: 'Longhorn Solar', founded: '2009', base: 'Pflugerville', crews: 'Own NABCEP-certified staff', work: '25 years', panels: '25 years equipment', roof: 'Within workmanship', prod: 'Not stated', pay: [1, 1, 0, 0] },
+  { slug: 'tesla-energy', name: 'Tesla Energy', founded: '', base: 'Austin (company HQ)', crews: 'Varies by area', work: '10 years (comprehensive)', panels: '25 years performance', roof: '10 years (in comprehensive)', prod: 'Not stated', pay: [1, 1, 0, 0] },
+  { slug: 'sunrun', name: 'Sunrun', founded: '2007', base: 'National', crews: 'Own crews; contracts allow subcontractors', work: '25 years with lease or PPA; 10 years if bought', panels: '25 years with lease or PPA', roof: '10 years', prod: '90% of estimate (lease or PPA)', pay: [1, 1, 1, 1] },
+  { slug: 'palmetto', name: 'Palmetto', founded: '2009', base: 'Charleston, SC', crews: 'Partner installers (marketplace)', work: '25 years with LightReach lease; 10 years in many cash or loan deals', panels: '25 years', roof: '5 to 10 years', prod: '95% (Palmetto Protect, cash or loan)', pay: [1, 1, 1, 1] },
+  { slug: 'good-faith-energy', name: 'Good Faith Energy', founded: '2014', base: 'Addison (Dallas area)', crews: 'Own employees, no subcontractors', work: '10 years', panels: '25 years product', roof: '5 years', prod: '25 years on power output', pay: [1, 1, 0, 0] },
+  { slug: 'trismart-solar', name: 'TriSMART Solar', founded: '2013', base: 'Houston (office in Austin)', crews: 'Not stated', work: '25 years (company listing)', panels: '25 years', roof: '25 years (company listing)', prod: '25 years', pay: [1, 1, 0, 0] },
+  { slug: 'freedom-forever-texas', name: 'Freedom Forever', founded: 'about 2011', base: 'Temecula, CA', crews: 'Subcontracted installers', work: '10 years (some reviews say none)', panels: 'Manufacturer warranty', roof: 'Not stated', prod: '25 years', pay: [1, 1, 1, 1] },
+];
+const BIG_SOURCES = [
+  ['Freedom Solar: warranty', 'https://freedomsolarpower.com/warranty'],
+  ['NerdWallet: Freedom Solar review', 'https://www.nerdwallet.com/home-ownership/solar/reviews/freedom-solar'],
+  ['Best Company: Longhorn Solar', 'https://bestcompany.com/solar/longhorn-solar'],
+  ['Tesla: solar panel warranty', 'https://tesla.com/support/energy/solar-panels/learn/warranty'],
+  ['ConsumerAffairs: Tesla Energy', 'https://www.consumeraffairs.com/solar-energy/tesla-energy.html'],
+  ['Best Company: Sunrun', 'https://www.bestcompany.com/solar/company/sunrun'],
+  ['NerdWallet: Sunrun review', 'https://www.nerdwallet.com/home-ownership/solar/reviews/sunrun'],
+  ['Palmetto: Palmetto Protect', 'https://help.palmetto.com/en/articles/6325836-palmetto-protect'],
+  ['This Old House: Palmetto review', 'https://www.thisoldhouse.com/solar-alternative-energy/palmetto-solar-review'],
+  ['ConsumerAffairs: Good Faith Energy', 'https://www.consumeraffairs.com/solar-energy/good-faith-energy.html'],
+  ['Best Company: Good Faith Energy', 'https://bestcompany.com/solar/good-faith-energy'],
+  ['EnergySage: TriSMART Solar', 'https://www.energysage.com/supplier/23626/trismart-solar'],
+  ['NerdWallet: Freedom Forever review', 'https://www.nerdwallet.com/home-ownership/solar/reviews/freedom-forever'],
+  ['EcoWatch: Freedom Forever review', 'https://www.ecowatch.com/solar/reviews/freedom-forever'],
+  ['PV Tech: Freedom Forever files for Chapter 11', 'https://www.pv-tech.org/freedom-forever-files-for-chapter-11-bankruptcy-with-500-million-debts/'],
+];
+const mark = (v) => (v ? '<span class="yes" aria-label="Yes">✓</span>' : '<span class="no" aria-label="No">–</span>');
+const bigLink = (b) => (companies.some((c) => c.slug === b.slug) ? `<a href="/companies/${b.slug}/">${esc(b.name)}</a>` : esc(b.name));
+const bigAe = (b) => (companies.find((c) => c.slug === b.slug)?.aeListed ? 'Yes' : 'No');
+write('biggest-solar-companies-austin/index.html', page({
+  path: '/biggest-solar-companies-austin/',
+  title: 'Biggest Solar Companies in Austin, TX Compared (2026)',
+  description: 'Freedom Solar, Longhorn, Tesla, Sunrun, Palmetto, Good Faith Energy, TriSMART and Freedom Forever compared on warranties, installers, financing and the Austin Energy rebate.',
+  current: 'big',
+  body: `
+<section class="page-head">
+  <div class="wrap">
+    <p class="crumbs"><a href="/">Solar companies in Austin</a> / Biggest providers compared</p>
+    <h1>The biggest solar companies in Austin, compared</h1>
+    <p>Eight of the best-known solar power companies serving Austin, TX, side by side on who installs, how long the warranties run and how you can pay.</p>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap">
+    <p class="section-intro">Freedom Solar and Longhorn Solar are the largest Austin-based installers here. Tesla, Sunrun, Palmetto and Freedom Forever sell nationwide, and Good Faith Energy and TriSMART work across Texas. Figures are what each company or a named review site publishes as of ${UPDATED_TEXT}. Warranties are contract terms, so get them in writing for your own quote.</p>
+
+    <h2>At a glance</h2>
+    <div class="table-scroll" style="margin:1.25rem 0 2.5rem">
+      <table>
+        <thead><tr><th>Company</th><th>Founded</th><th>Based in</th><th>Who installs</th><th>Austin Energy rebate partner</th></tr></thead>
+        <tbody>
+${BIG.map((b) => `          <tr><td>${bigLink(b)}</td><td class="num">${b.founded || 'Not stated'}</td><td>${esc(b.base)}</td><td>${esc(b.crews)}</td><td>${bigAe(b)}</td></tr>`).join('\n')}
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Warranties</h2>
+    <div class="table-scroll" style="margin:1.25rem 0 2.5rem">
+      <table>
+        <thead><tr><th>Company</th><th>Workmanship</th><th>Panels and equipment</th><th>Roof penetrations</th><th>Production guarantee</th></tr></thead>
+        <tbody>
+${BIG.map((b) => `          <tr><td>${bigLink(b)}</td><td>${esc(b.work)}</td><td>${esc(b.panels)}</td><td>${esc(b.roof)}</td><td>${esc(b.prod)}</td></tr>`).join('\n')}
+        </tbody>
+      </table>
+    </div>
+
+    <h2>How you can pay</h2>
+    <div class="table-scroll" style="margin:1.25rem 0 1rem">
+      <table class="marks">
+        <thead><tr><th>Company</th><th>Cash</th><th>Loan</th><th>Lease</th><th>PPA</th></tr></thead>
+        <tbody>
+${BIG.map((b) => `          <tr><td>${bigLink(b)}</td>${b.pay.map((v) => `<td>${mark(v)}</td>`).join('')}</tr>`).join('\n')}
+        </tbody>
+      </table>
+    </div>
+    <p class="note">With a lease or PPA the company owns the panels. In 2026 that is the only way homeowners still get value from the federal tax credit. The contract runs 20 to 25 years and has to pass to a buyer if you sell, and you should ask Austin Energy whether its rebate applies to your contract type. See <a href="/solar-cost-austin/">Austin solar costs and rebates</a>.</p>
+
+    <h2 style="margin-top:2.5rem">Before you sign with a large provider</h2>
+    <div class="prose">
+      <ul>
+        <li><strong>Freedom Forever</strong> filed for Chapter 11 bankruptcy protection on 15 April 2026 and keeps operating under court supervision. Ask who will honour the workmanship warranty.</li>
+        <li><strong>Texas Attorney General</strong> announced in April 2026 an investigation into the sales practices of several residential installers, including Freedom Forever and Sunrun. An investigation is not a finding of wrongdoing.</li>
+        <li><strong>Sunrun and Palmetto</strong> give their longest warranties to lease and PPA customers. If you buy, check which terms apply to you.</li>
+        <li><strong>Palmetto</strong> does not install itself: a partner company in its network does the work, so ask which one.</li>
+        <li><strong>Longhorn Solar</strong> was not on Austin Energy's participating contractor list when we checked, so it cannot file for the $2,500 rebate.</li>
+      </ul>
+    </div>
+
+    <h2 style="margin-top:2.5rem">Sources</h2>
+    <ul class="sources">
+${BIG_SOURCES.map(([t, u]) => `      <li><a href="${u}" rel="noopener">${esc(t)}</a></li>`).join('\n')}
+      <li><a href="https://austinenergy.com/green-power/solar-solutions/participating-solar-contractors" rel="noopener">Austin Energy: participating solar contractors</a></li>
+    </ul>
+    <p class="note">Checked on 17 November 2026. If you represent one of these companies and a figure is out of date, it will be corrected on request.</p>
+  </div>
+</section>`,
+  jsonld: [{ '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Solar companies in Austin', item: `${SITE}/` },
+    { '@type': 'ListItem', position: 2, name: 'Biggest providers compared', item: `${SITE}/biggest-solar-companies-austin/` } ] }],
+}));
 
 // ---------- Cost guide ----------
 write('solar-cost-austin/index.html', page({
@@ -544,7 +652,7 @@ if (existsSync(join(root, 'logos-opt'))) {
 }
 write('favicon.svg', `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="7" fill="#17224d"/><circle cx="16" cy="16" r="8" fill="#ffc531"/></svg>`);
 write('robots.txt', `User-agent: *\nAllow: /\n\nSitemap: ${SITE}/sitemap.xml\n`);
-const urls = ['/', '/solar-cost-austin/', '/about/', ...companies.map((c) => `/companies/${c.slug}/`)];
+const urls = ['/', '/biggest-solar-companies-austin/', '/solar-cost-austin/', '/about/', ...companies.map((c) => `/companies/${c.slug}/`)];
 write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((u) => `  <url><loc>${SITE}${u}</loc><lastmod>${UPDATED}</lastmod></url>`).join('\n')}\n</urlset>\n`);
 
 console.log(`Built ${urls.length} pages into public/`);

@@ -259,3 +259,8 @@ td.num, th.num { font-variant-numeric: tabular-nums; }
 .head-brand { display: flex; align-items: center; gap: 1.1rem; }
 .head-brand h1 { margin: 0; }
 .badge-ae { background: #fff3cc; color: #7a5600; }
+table.marks td:not(:first-child), table.marks th:not(:first-child) { text-align: center; width: 12%; }
+.yes { color: var(--local, #1f7a4d); font-weight: 700; }
+.no { color: #9aa3b5; }
+.sources { padding-left: 1.2rem; columns: 2 18rem; font-size: 0.93rem; }
+.sources li { margin-bottom: 0.35rem; break-inside: avoid; }
