@@ -454,6 +454,7 @@ if (OP) {
   const contact = `Phone / Telefon: ${esc(OP.phone)}<br>Email / E-Mail: <a href="mailto:${esc(OP.email)}">${esc(OP.email)}</a>`;
   write('legal-notice/index.html', page({
     path: '/legal-notice/',
+    noindex: true,
     title: 'Legal Notice (Impressum) | Austin Texas Solar',
     description: 'Legal notice and provider identification for austintexassolar.com.',
     body: `
@@ -475,6 +476,7 @@ if (OP) {
   }));
   write('privacy/index.html', page({
     path: '/privacy/',
+    noindex: true,
     title: 'Privacy Policy | Austin Texas Solar',
     description: 'How austintexassolar.com handles personal data: hosting, the optional map, contact by email and your rights under the GDPR.',
     body: `
