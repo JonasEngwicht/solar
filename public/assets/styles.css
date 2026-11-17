@@ -248,3 +248,13 @@ td.num, th.num { font-variant-numeric: tabular-nums; }
 .calc-avg { position: absolute; top: -5px; bottom: -5px; width: 4px; margin-left: -2px; left: var(--avg, 40%); background: var(--ink); border-radius: 2px; transition: left 0.15s; }
 .calc .figures { margin-bottom: 1rem; }
 .calc .figures dd { font-size: clamp(1.3rem, 3.4vw, 1.8rem); }
+
+/* Company logos */
+.logo { flex: none; width: 56px; height: 56px; border-radius: 14px; background: #fff; border: 1px solid var(--line); display: grid; place-items: center; overflow: hidden; }
+.logo img { width: 100%; height: 100%; object-fit: contain; padding: 6px; }
+.logo-mono { background: var(--mono); border-color: transparent; color: #fff; font: 700 1.2rem/1 var(--font-display, inherit); letter-spacing: 0.02em; }
+.logo-lg { width: 76px; height: 76px; border-radius: 18px; }
+.logo-lg.logo-mono { font-size: 1.6rem; }
+.row-head { display: flex; gap: 1rem; align-items: flex-start; }
+.head-brand { display: flex; align-items: center; gap: 1.1rem; }
+.head-brand h1 { margin: 0; }

@@ -17,3 +17,8 @@ Static directory of solar companies in Austin, Texas.
 
 With the repository connected to the Cloudflare Worker `solar` (Workers Builds), every push to `main` deploys.
 Manual deploy: `npm run deploy`.
+
+## Logos
+
+Drop a logo as `logos-src/<slug>.png|jpg|webp` (slug = company slug), run `python3 tools/optimize-logos.py`
+(shrinks to max 240 px WebP, usually 2-8 KB) and then `node build.mjs`. Companies without a file get an initials badge.

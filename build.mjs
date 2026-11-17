@@ -1,6 +1,6 @@
 // Builds the static site into ./public from data/companies.json.
 // Run: node build.mjs
-import { readFileSync, writeFileSync, mkdirSync, rmSync, copyFileSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, rmSync, copyFileSync, existsSync, readdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -78,6 +78,15 @@ const tier = (t) => (t ? `<span class="tier" title="Price level ${t} of 3">${'$'
 const tierText = (t) => ['', 'Lower-priced', 'Mid-range', 'Premium'][t] || 'By quote';
 const mapUrl = (c) => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(c.name + ' ' + c.address)}`;
 
+// Logo: optimised WebP from logos-opt/<slug>.webp if present, otherwise a lightweight inline monogram.
+const MONO = { local: '#1f7a4d', region: '#234a94', state: '#5a2f9b', national: '#454d63' };
+function logo(c, cls = '') {
+  const file = join(root, 'logos-opt', c.slug + '.webp');
+  if (existsSync(file)) return `<span class="logo ${cls}"><img src="/assets/logos/${c.slug}.webp" alt="${esc(c.name)} logo" width="64" height="64" loading="lazy" decoding="async"></span>`;
+  const ini = c.name.replace(/[^A-Za-z0-9 ]/g, '').split(/\s+/).filter(Boolean).slice(0, 2).map((w) => w[0].toUpperCase()).join('');
+  return `<span class="logo logo-mono ${cls}" style="--mono:${MONO[c.type] || '#17224d'}" aria-hidden="true">${esc(ini)}</span>`;
+}
+
 function write(path, html) {
   const file = join(out, path);
   mkdirSync(dirname(file), { recursive: true });
@@ -151,13 +160,16 @@ const oldest = companies.filter((c) => c.founded).sort((a, b) => a.founded - b.f
 function row(c, i) {
   const text = [c.name, c.city, c.usp, c.services.join(' '), TYPES[c.type].label].join(' ').toLowerCase();
   return `<li class="row" data-type="${c.type}" data-area="${c.area ?? ''}" data-services="|${c.services.join('|')}|" data-name="${esc(c.name)}" data-founded="${c.founded ?? ''}" data-rank="${i}" data-text="${esc(text)}">
-  <div>
+  <div class="row-head">
+    ${logo(c)}
+    <div>
     <h3><a href="/companies/${c.slug}/">${esc(c.name)}</a></h3>
     <div class="row-meta">
       <span class="badge badge-${c.type}">${TYPES[c.type].label}</span>
       <span>${esc(c.city)}</span>
       ${c.founded ? `<span>Since ${c.founded}</span>` : ''}
       ${c.tier ? `<span>${tier(c.tier)} ${tierText(c.tier)}</span>` : ''}
+    </div>
     </div>
   </div>
   <div>
@@ -344,7 +356,7 @@ for (const c of companies) {
 <section class="page-head">
   <div class="wrap">
     <p class="crumbs"><a href="/">Solar companies in Austin</a> / ${esc(c.name)}</p>
-    <h1>${esc(c.name)}</h1>
+    <div class="head-brand">${logo(c, 'logo-lg')}<h1>${esc(c.name)}</h1></div>
     <p>${esc(c.usp)}</p>
   </div>
 </section>
@@ -522,6 +534,10 @@ write('404.html', page({
 mkdirSync(join(out, 'assets'), { recursive: true });
 copyFileSync(join(root, 'src/styles.css'), join(out, 'assets/styles.css'));
 copyFileSync(join(root, 'src/app.js'), join(out, 'assets/app.js'));
+if (existsSync(join(root, 'logos-opt'))) {
+  mkdirSync(join(out, 'assets/logos'), { recursive: true });
+  for (const f of readdirSync(join(root, 'logos-opt'))) if (f.endsWith('.webp')) copyFileSync(join(root, 'logos-opt', f), join(out, 'assets/logos', f));
+}
 write('favicon.svg', `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="7" fill="#17224d"/><circle cx="16" cy="16" r="8" fill="#ffc531"/></svg>`);
 write('robots.txt', `User-agent: *\nAllow: /\n\nSitemap: ${SITE}/sitemap.xml\n`);
 const urls = ['/', '/solar-cost-austin/', '/about/', ...companies.map((c) => `/companies/${c.slug}/`)];
