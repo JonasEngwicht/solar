@@ -386,8 +386,8 @@ for (const c of companies) {
       <p>${esc(c.about)}</p>
       <dl class="facts" style="margin-top:2rem">
         <div><dt>Based in</dt><dd>${esc(c.city)} <span class="badge badge-${c.type}">${TYPES[c.type].label}</span></dd></div>
-        <div><dt>Founded</dt><dd>${c.founded ?? (c.source === 'ae' ? 'Not reviewed yet' : 'Not publicly stated')}</dd></div>
-        <div><dt>Price level</dt><dd>${c.tier ? `${tier(c.tier)} ${tierText(c.tier)}. ${esc(c.tierNote)}.` : (c.source === 'ae' ? 'Not reviewed yet. Ask for the price per watt in writing.' : 'Quotes per project; no public pricing found.')}</dd></div>
+        <div><dt>Founded</dt><dd>${c.founded ?? (c.source === 'ae' && !c.reviewed ? 'Not reviewed yet' : 'Not publicly stated')}</dd></div>
+        <div><dt>Price level</dt><dd>${c.tier ? `${tier(c.tier)} ${tierText(c.tier)}. ${esc(c.tierNote)}.` : (c.source === 'ae' && !c.reviewed ? 'Not reviewed yet. Ask for the price per watt in writing.' : 'Quotes per project; no public pricing found.')}</dd></div>
         <div><dt>Austin Energy rebate</dt><dd>${c.aeListed ? "Listed as a participating contractor on Austin Energy's site (page dated April 2025), so it can file for the $2,500 rebate. Check again before you sign." : "Not on Austin Energy's participating contractor list when we checked on 17 November 2026, so it cannot file for the $2,500 rebate."}</dd></div>
         <div><dt>Services</dt><dd>${c.services.map(esc).join(', ')}</dd></div>
         ${c.ratings.length ? `<div><dt>Ratings elsewhere</dt><dd>${c.ratings.map(esc).join('<br>')}</dd></div>` : ''}
@@ -402,6 +402,7 @@ for (const c of companies) {
         </ul>
         ${c.ratings.length ? `<p class="note">Ratings are quoted from the named third-party sites as of ${UPDATED_TEXT} and may have changed.</p>` : ''}
       </div>
+      ${c.refs?.length ? `<h2 style="margin:2rem 0 0.8rem;font-size:1.3rem">Sources</h2>\n      <ul class="sources">${c.refs.map(([t, u]) => `<li><a href="${u}" rel="noopener">${esc(t)}</a></li>`).join('')}<li><a href="https://austinenergy.com/green-power/solar-solutions/participating-solar-contractors" rel="noopener">Austin Energy: participating solar contractors</a></li></ul>` : ''}
     </div>
     <aside>
       <div class="contact">
@@ -431,6 +432,7 @@ for (const c of companies) {
   if (hasStreet) biz.address = c.address;
   write(`companies/${c.slug}/index.html`, page({
     path: `/companies/${c.slug}/`,
+    noindex: !!c.noindex,
     title: `${c.name}: Solar Company Serving Austin, TX | Contact & Profile`,
     description: `${c.name}${c.founded ? `, founded ${c.founded}` : ''}, ${TYPES[c.type].long.toLowerCase()}. ${c.usp} Phone, address and website.`.slice(0, 300),
     body,
