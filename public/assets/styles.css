@@ -258,3 +258,4 @@ td.num, th.num { font-variant-numeric: tabular-nums; }
 .row-head { display: flex; gap: 1rem; align-items: flex-start; }
 .head-brand { display: flex; align-items: center; gap: 1.1rem; }
 .head-brand h1 { margin: 0; }
+.badge-ae { background: #fff3cc; color: #7a5600; }

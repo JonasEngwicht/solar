@@ -166,6 +166,7 @@ function row(c, i) {
     <h3><a href="/companies/${c.slug}/">${esc(c.name)}</a></h3>
     <div class="row-meta">
       <span class="badge badge-${c.type}">${TYPES[c.type].label}</span>
+      ${c.aeListed ? '<span class="badge badge-ae">Austin Energy rebate partner</span>' : ''}
       <span>${esc(c.city)}</span>
       ${c.founded ? `<span>Since ${c.founded}</span>` : ''}
       ${c.tier ? `<span>${tier(c.tier)} ${tierText(c.tier)}</span>` : ''}
@@ -184,7 +185,7 @@ function row(c, i) {
 }
 
 const faqs = [
-  ['How many solar companies are there in Austin?', `This directory lists ${companies.length} solar companies that serve Austin, of which ${localCount} are based in the Austin area. Austin Energy's own list of participating solar contractors is longer, at roughly 65 to 72 firms, because it includes every contractor registered for its rebate programme.`],
+  ['How many solar companies are there in Austin?', `This directory lists ${companies.length} solar companies that serve Austin, of which ${localCount} are based in the Austin area. Austin Energy's own list of participating solar contractors had about 53 firms when we checked on 17 November 2026. The page itself is dated April 2025, so confirm it before you rely on it.`],
   ['Which Austin Texas solar companies qualify for the Austin Energy rebate?', 'Only installers on Austin Energy\'s participating solar contractor list can apply for the rebate on your behalf. The list changes, so check it on austinenergy.com or ask the installer to confirm in writing before you sign.'],
   ['What do solar power companies in Austin, TX charge?', 'Published averages for Austin range from about $2.22 to $3.32 per watt, with SolarReviews putting the 2026 average at $2.84 per watt. Local installers are often reported to be cheaper than national brands for comparable equipment. Always compare quotes on price per watt.'],
   ['Is a local or a national solar company better?', 'Local companies usually have their own crews, know Austin Energy\'s permitting and interconnection process, and are easier to reach for service. National companies offer more lease and PPA options. Whichever you choose, check who actually installs the system and who honours the workmanship warranty.'],
@@ -369,6 +370,7 @@ for (const c of companies) {
         <div><dt>Based in</dt><dd>${esc(c.city)} <span class="badge badge-${c.type}">${TYPES[c.type].label}</span></dd></div>
         <div><dt>Founded</dt><dd>${c.founded ?? 'Not publicly stated'}</dd></div>
         <div><dt>Price level</dt><dd>${c.tier ? `${tier(c.tier)} ${tierText(c.tier)}. ${esc(c.tierNote)}.` : 'Quotes per project; no public pricing found.'}</dd></div>
+        <div><dt>Austin Energy rebate</dt><dd>${c.aeListed ? "Listed as a participating contractor on Austin Energy's site (page dated April 2025), so it can file for the $2,500 rebate. Check again before you sign." : "Not on Austin Energy's participating contractor list when we checked on 17 November 2026, so it cannot file for the $2,500 rebate."}</dd></div>
         <div><dt>Services</dt><dd>${c.services.map(esc).join(', ')}</dd></div>
         ${c.ratings.length ? `<div><dt>Ratings elsewhere</dt><dd>${c.ratings.map(esc).join('<br>')}</dd></div>` : ''}
       </dl>
@@ -470,7 +472,7 @@ write('solar-cost-austin/index.html', page({
       <li>Receive a letter of intent from Austin Energy before installation starts.</li>
       <li>Pass Austin Energy's final inspection.</li>
     </ol>
-    <p>Austin Energy recommends getting at least three estimates from different participating contractors. The current list is on <a href="https://austinenergy.com/green-power/solar-solutions/participating-solar-contractors" rel="noopener">austinenergy.com</a>.</p>
+    <p>Austin Energy recommends getting at least three estimates from different participating contractors. The current list is on <a href="https://austinenergy.com/green-power/solar-solutions/participating-solar-contractors" rel="noopener">austinenergy.com</a>. When we checked on 17 November 2026 it named about 53 firms. 15 of the 29 companies in this directory are on it, and each profile says whether it is.</p>
 
     <h2>Value of Solar instead of net metering</h2>
     <p>Austin Energy does not use traditional net metering. It credits the electricity your system produces at a set Value of Solar rate, which installers reported at about 9.9 cents per kWh in 2026. The rate is reviewed periodically, so check Austin Energy's current rate schedule before estimating your savings.</p>
