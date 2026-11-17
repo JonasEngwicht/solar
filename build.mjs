@@ -68,7 +68,7 @@ const calculator = `<div class="calc" data-calc>
   <dl class="figures">
     <div><dt>At the Austin average</dt><dd data-calc-avg>$19,880</dd></div>
     <div><dt>Typical range</dt><dd data-calc-range>$15,540–$23,240</dd></div>
-    <div><dt>After the $2,500 rebate</dt><dd data-calc-net>$17,380</dd></div>
+    <div><dt>After the $4,000 rebate</dt><dd data-calc-net>$15,880</dd></div>
   </dl>
   <p class="note" id="calc-note">Uses SolarReviews' 2026 Austin figures: $2.84 per watt on average, $2.22 to $3.32 as the typical range. An estimate, not a quote.</p>
 </div>`;
@@ -157,6 +157,8 @@ ${body}
       <a href="/#directory">Solar companies in Austin</a>
       <a href="/biggest-solar-companies-austin/">Biggest solar companies compared</a>
       <a href="/solar-cost-austin/">Solar cost and rebates in Austin</a>
+      <a href="/austin-energy-solar-rebate/">Austin Energy solar rebate</a>
+      <a href="/value-of-solar-austin-energy/">Value of Solar rate</a>
       <a href="/about/">How this directory works</a>
     </nav>
   </div>
@@ -201,11 +203,11 @@ function row(c, i) {
 
 const faqs = [
   ['How many solar companies are there in Austin?', `This directory lists ${companies.length} solar companies that serve Austin, of which ${localCount} are based in the Austin area. Austin Energy's own list of participating solar contractors had ${AE_TOTAL} firms when we checked on 17 November 2026. The page itself is dated April 2025, so confirm it before you rely on it.`],
-  ['Which Austin Texas solar companies qualify for the Austin Energy rebate?', 'Only installers on Austin Energy\'s participating solar contractor list can apply for the rebate on your behalf. The list changes, so check it on austinenergy.com or ask the installer to confirm in writing before you sign.'],
+  ['Which Austin Texas solar companies qualify for the Austin Energy rebate?', 'Only installers on Austin Energy\'s participating solar contractor list can apply for the $4,000 rebate on your behalf. The list changes, so check it on austinenergy.com or ask the installer to confirm in writing before you sign.'],
   ['What do solar power companies in Austin, TX charge?', 'Published averages for Austin range from about $2.22 to $3.32 per watt, with SolarReviews putting the 2026 average at $2.84 per watt. Local installers are often reported to be cheaper than national brands for comparable equipment. Always compare quotes on price per watt.'],
   ['Is a local or a national solar company better?', 'Local companies usually have their own crews, know Austin Energy\'s permitting and interconnection process, and are easier to reach for service. National companies offer more lease and PPA options. Whichever you choose, check who actually installs the system and who honours the workmanship warranty.'],
   ['Do I need a battery with solar in Austin?', 'No. A grid-tied system works without one. A battery keeps selected circuits running during an outage, which matters to many Central Texas homeowners after the 2021 and 2023 winter storms, but it adds substantially to the price.'],
-  ['How long does a solar installation take in Austin?', 'The work on the roof usually takes one to three days. Design, permitting, Austin Energy\'s letter of intent and the final inspection add several weeks before the system is switched on.'],
+  ['How long does a solar installation take in Austin?', 'The work on the roof usually takes one to three days. Design, permitting, Austin Energy\'s rebate confirmation letter and the final inspection add several weeks before the system is switched on.'],
 ];
 
 const home = `
@@ -221,7 +223,7 @@ const home = `
     <ul class="hero-facts">
       <li><strong>${localCount}</strong> based in the Austin area</li>
       <li><strong>${oldest.founded}</strong> oldest installer founded</li>
-      <li><strong>$2,500</strong> Austin Energy rebate</li>
+      <li><strong>$4,000</strong> Austin Energy rebate</li>
     </ul>
   </div>
 </section>
@@ -300,7 +302,7 @@ ${companies.filter((c) => c.type === 'local' && c.source !== 'ae').map((c) => ` 
     <h2>How to choose between solar companies in Austin</h2>
     <p class="section-intro">Six checks that separate a dependable installer from a risky one. Ask each company you shortlist.</p>
     <ul class="checks">
-      <li><h3>Austin Energy participating contractor</h3><p>Only participating contractors can file for the $2,500 rebate. Ask for confirmation in writing.</p></li>
+      <li><h3>Austin Energy participating contractor</h3><p>Only participating contractors can file for the $4,000 rebate. Ask for confirmation in writing.</p></li>
       <li><h3>Texas electrical contractor licence</h3><p>Solar installers in Texas need a state electrical contractor licence from TDLR. Look the number up before signing.</p></li>
       <li><h3>NABCEP-certified staff</h3><p>NABCEP is the main professional credential for solar design and installation in North America.</p></li>
       <li><h3>Their own installation crew</h3><p>Ask who will be on your roof. Subcontracted crews are common with national brands and make accountability harder.</p></li>
@@ -330,7 +332,7 @@ ${companies.filter((c) => c.type === 'local' && c.source !== 'ae').map((c) => ` 
     <dl class="figures">
       <div><dt>Average price per watt</dt><dd>$2.84<small>SolarReviews, Austin, 2026</small></dd></div>
       <div><dt>Typical range per watt</dt><dd>$2.22–$3.32<small>SolarReviews, Austin</small></dd></div>
-      <div><dt>Austin Energy rebate</dt><dd>$2,500<small>Residential, via a participating contractor</small></dd></div>
+      <div><dt>Austin Energy rebate</dt><dd>$4,000<small>Residential, via a participating contractor</small></dd></div>
     </dl>
     <h3 style="margin:2.5rem 0 1rem">Estimate your system price</h3>
     ${calculator}
@@ -389,7 +391,7 @@ for (const c of companies) {
         <div><dt>Based in</dt><dd>${esc(c.city)} <span class="badge badge-${c.type}">${TYPES[c.type].label}</span></dd></div>
         <div><dt>Founded</dt><dd>${c.founded ?? (c.source === 'ae' && !c.reviewed ? 'Not reviewed yet' : 'Not publicly stated')}</dd></div>
         <div><dt>Price level</dt><dd>${c.tier ? `${tier(c.tier)} ${tierText(c.tier)}. ${esc(c.tierNote)}.` : (c.source === 'ae' && !c.reviewed ? 'Not reviewed yet. Ask for the price per watt in writing.' : 'Quotes per project; no public pricing found.')}</dd></div>
-        <div><dt>Austin Energy rebate</dt><dd>${c.aeListed ? "Listed as a participating contractor on Austin Energy's site (page dated April 2025), so it can file for the $2,500 rebate. Check again before you sign." : "Not on Austin Energy's participating contractor list when we checked on 17 November 2026, so it cannot file for the $2,500 rebate."}</dd></div>
+        <div><dt>Austin Energy rebate</dt><dd>${c.aeListed ? "Listed as a participating contractor on Austin Energy's site (page dated April 2025), so it can file for the $4,000 rebate. Check again before you sign." : "Not on Austin Energy's participating contractor list when we checked on 17 November 2026, so it cannot file for the $4,000 rebate."}</dd></div>
         <div><dt>Services</dt><dd>${c.services.map(esc).join(', ')}</dd></div>
         ${c.ratings.length ? `<div><dt>Ratings elsewhere</dt><dd>${c.ratings.map(esc).join('<br>')}</dd></div>` : ''}
       </dl>
@@ -397,7 +399,7 @@ for (const c of companies) {
       <h2 style="margin-bottom:1rem;font-size:1.6rem">Before you sign with ${esc(c.name)}</h2>
       <div class="prose">
         <ul>
-          <li>Ask whether the company is currently an Austin Energy participating solar contractor. Without that, you cannot claim the $2,500 rebate.</li>
+          <li>Ask whether the company is currently an Austin Energy participating solar contractor. Without that, you cannot claim the $4,000 rebate.</li>
           <li>Get the total price and the price per watt in writing, and compare with at least two other Austin solar companies.</li>
           <li>Ask who installs the system and how long the workmanship warranty runs.</li>
         </ul>
@@ -444,12 +446,172 @@ for (const c of companies) {
   }));
 }
 
+// ---------- Guides: Austin Energy rebate and Value of Solar (official figures, checked 17 Nov 2026) ----------
+const AE_HOME = 'https://austinenergy.com/green-power/solar-solutions/for-your-home';
+const AE_VOS = 'https://austinenergy.com/green-power/solar-solutions/value-of-solar-rate';
+const AE_LIST = 'https://austinenergy.com/green-power/solar-solutions/participating-solar-contractors';
+const aePartners = companies.filter((c) => c.aeListed && c.type === 'local' && !c.noindex);
+const rebateFaq = [
+  ['How much is the Austin Energy solar rebate?', 'Since 1 October 2026 Austin Energy pays $4,000 for a qualifying new home solar system installed by a participating contractor.'],
+  ['Who can get the Austin Energy solar rebate?', 'Austin Energy residential customers who install a new system of at least 3 kW (DC) that is mostly free of shading, at the home tied to their Austin Energy account, through a participating solar contractor.'],
+  ['Can I install first and apply for the rebate later?', 'No. You must receive Austin Energy\'s Solar Rebate Confirmation Letter before the system is installed, otherwise the system is not eligible.'],
+  ['Is a solar PPA allowed with Austin Energy?', 'No. Austin Energy states that third-party solar power purchase agreements are not allowed in its service territory.'],
+];
+write('austin-energy-solar-rebate/index.html', page({
+  path: '/austin-energy-solar-rebate/',
+  title: 'Austin Energy Solar Rebate 2026: $4,000 and How to Get It',
+  description: 'Austin Energy pays a $4,000 rebate for home solar since October 2026. Who qualifies, the steps in order, what costs you the rebate and which Austin solar companies can file for it.',
+  current: 'cost',
+  body: `
+<section class="page-head">
+  <div class="wrap">
+    <p class="crumbs"><a href="/">Solar companies in Austin</a> / <a href="/solar-cost-austin/">Cost and rebates</a> / Austin Energy rebate</p>
+    <h1>The Austin Energy solar rebate: $4,000 and how to get it</h1>
+    <p>Austin Energy raised its home solar rebate to $4,000. Here is who qualifies and the order in which things have to happen.</p>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap prose">
+    <h2>At a glance</h2>
+    <div class="table-scroll" style="margin:1rem 0 2rem">
+      <table>
+        <tbody>
+          <tr><th>Amount</th><td>$4,000 per qualifying home system</td></tr>
+          <tr><th>Who</th><td>Austin Energy residential customers, at the home tied to their account</td></tr>
+          <tr><th>System</th><td>New, at least 3 kW (DC), mostly free of shading</td></tr>
+          <tr><th>Installer</th><td>Must be an Austin Energy participating solar contractor, who applies for you</td></tr>
+          <tr><th>Timing</th><td>The rebate confirmation letter must arrive before installation</td></tr>
+          <tr><th>Not allowed</th><td>Third-party power purchase agreements (PPAs)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>The steps in order</h2>
+    <ol>
+      <li><strong>Take Austin Energy's Solar Rebate Quiz.</strong> Have your contact details, Austin Energy account number and address ready. You get a rebate reference number at the end.</li>
+      <li><strong>Get quotes and hire a participating contractor.</strong> Austin Energy recommends at least three quotes. Give the reference number to the contractor you choose; they apply on your behalf.</li>
+      <li><strong>Sign two forms.</strong> The Residential Interconnection Agreement, needed for every home system, and the Customer Agreement Form, needed for rebated systems.</li>
+      <li><strong>Wait for the Solar Rebate Confirmation Letter.</strong> Installation must not start before it arrives.</li>
+      <li><strong>Installation.</strong></li>
+      <li><strong>Final inspection.</strong> After it passes, Austin Energy installs the solar meter and you get permission to operate.</li>
+      <li><strong>Quality assurance review.</strong> The rebate is processed after this last check.</li>
+    </ol>
+
+    <h2>What costs you the rebate</h2>
+    <ul>
+      <li>Hiring a company that is not on Austin Energy's participating contractor list.</li>
+      <li>Installing before the confirmation letter arrives.</li>
+      <li>A system under 3 kW (DC) or a heavily shaded roof.</li>
+      <li>Living outside Austin Energy's service area. Parts of Round Rock, Leander and Hays County are served by other utilities; see the <a href="/solar-companies/north-austin-round-rock/">North Austin and Round Rock</a> and <a href="/solar-companies/buda-san-marcos/">Buda and San Marcos</a> pages.</li>
+    </ul>
+
+    <h2>Other Austin Energy incentives</h2>
+    <ul>
+      <li><strong>Value of Solar credits</strong> of 12.89 cents for every kWh your system produces. See <a href="/value-of-solar-austin-energy/">how the Value of Solar rate works</a>.</li>
+      <li><strong>Property tax exemption</strong> for the added value of a solar system, administered by the Texas Comptroller.</li>
+      <li><strong>Power Partner Battery</strong>, a demand response pilot that pays battery owners for letting Austin Energy use stored energy at peak times.</li>
+    </ul>
+
+    <h2>Austin solar companies that can file for the rebate</h2>
+    <p>These Austin-area companies in our directory were on Austin Energy's participating contractor list when we checked on 17 November 2026. Confirm with the company before you sign.</p>
+    <ul class="area-links">
+${aePartners.map((c) => `      <li><a href="/companies/${c.slug}/">${esc(c.name)}</a> (${esc(c.city)})</li>`).join('\n')}
+    </ul>
+
+    <h2>Questions</h2>
+${rebateFaq.map(([q, a]) => `    <h3>${esc(q)}</h3>\n    <p>${esc(a)}</p>`).join('\n')}
+
+    <h2>Sources</h2>
+    <ul class="sources">
+      <li><a href="${AE_HOME}" rel="noopener">Austin Energy: Rebates for home solar systems</a></li>
+      <li><a href="${AE_LIST}" rel="noopener">Austin Energy: Participating solar contractors</a></li>
+      <li><a href="${AE_VOS}" rel="noopener">Austin Energy: Value of Solar rate</a></li>
+    </ul>
+    <p class="note">Austin Energy's page was last modified on 1 October 2026. Checked on 17 November 2026. Programme rules can change at any time.</p>
+  </div>
+</section>`,
+  jsonld: [
+    { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: rebateFaq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) },
+    { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Solar companies in Austin', item: `${SITE}/` },
+      { '@type': 'ListItem', position: 2, name: 'Cost and rebates', item: `${SITE}/solar-cost-austin/` },
+      { '@type': 'ListItem', position: 3, name: 'Austin Energy solar rebate', item: `${SITE}/austin-energy-solar-rebate/` } ] },
+  ],
+}));
+
+const vosFaq = [
+  ['What is the Austin Energy Value of Solar rate in 2026?', 'For homes and other systems under 1 MW-AC it is 12.89 cents per kWh, effective 1 October 2026. Systems of 1 MW-AC and more receive 10.22 cents.'],
+  ['Does Austin Energy have net metering?', 'No. Austin Energy credits all the energy your system produces at the Value of Solar rate and bills all the energy your home uses at its normal rates.'],
+  ['What happens to extra solar credits?', 'Credits larger than your electric charges carry over to the next month. They cannot be cashed out or transferred and do not apply to water, trash or other city services.'],
+];
+write('value-of-solar-austin-energy/index.html', page({
+  path: '/value-of-solar-austin-energy/',
+  title: 'Austin Energy Value of Solar Rate 2026: 12.89¢ per kWh Explained',
+  description: 'How Austin Energy credits home solar instead of net metering: the 12.89 cents per kWh Value of Solar rate since October 2026, how credits roll over and how to estimate payback.',
+  current: 'cost',
+  body: `
+<section class="page-head">
+  <div class="wrap">
+    <p class="crumbs"><a href="/">Solar companies in Austin</a> / <a href="/solar-cost-austin/">Cost and rebates</a> / Value of Solar</p>
+    <h1>Austin Energy's Value of Solar rate, explained</h1>
+    <p>Austin Energy pays a fixed credit for every kilowatt-hour your panels produce instead of using net metering. Since 1 October 2026 that credit is 12.89 cents for homes.</p>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap prose">
+    <h2>The current rates</h2>
+    <div class="table-scroll" style="margin:1rem 0 2rem">
+      <table>
+        <thead><tr><th>System size</th><th class="num">Value of Solar rate</th></tr></thead>
+        <tbody>
+          <tr><td>Under 1 MW-AC (all home systems)</td><td class="num">12.89 cents per kWh</td></tr>
+          <tr><td>1 MW-AC and over</td><td class="num">10.22 cents per kWh</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Effective 1 October 2026 and subject to change. Austin Energy updates the rate every three years.</p>
+
+    <h2>How the credit works</h2>
+    <ol>
+      <li><strong>Production:</strong> a separate solar meter measures everything your panels produce, and Austin Energy credits all of it at the Value of Solar rate.</li>
+      <li><strong>Consumption:</strong> you pay normal residential rates for all the electricity your home uses, whether it came from your roof or the grid.</li>
+      <li><strong>Credit:</strong> the credit is subtracted from the electric part of your bill. What is left over carries to the next month.</li>
+    </ol>
+    <p>Credits cannot be cashed out or transferred, and they do not reduce water, trash or other city charges. Austin Energy therefore recommends sizing a system to your yearly consumption rather than larger.</p>
+
+    <h2>A quick example</h2>
+    <p>A system that produces 10,000 kWh in a year earns 10,000 × $0.1289 = <strong>$1,289</strong> in credits that year. Real production depends on size, roof direction and shade; Austin Energy points to NREL's free PVWatts calculator for an estimate.</p>
+
+    <h2>Estimating payback</h2>
+    <p>Austin Energy suggests dividing the net cost of the system by your yearly savings from Value of Solar credits. A 7 kW system at the 2026 Austin average of $2.84 per watt costs $19,880; after the $4,000 rebate that is $15,880. If you finance or lease, include payment increases over the full term. See the <a href="/solar-cost-austin/">Austin solar cost guide</a> and the <a href="/austin-energy-solar-rebate/">rebate guide</a>.</p>
+
+    <h2>Questions</h2>
+${vosFaq.map(([q, a]) => `    <h3>${esc(q)}</h3>\n    <p>${esc(a)}</p>`).join('\n')}
+
+    <h2>Sources</h2>
+    <ul class="sources">
+      <li><a href="${AE_VOS}" rel="noopener">Austin Energy: Value of Solar rate</a></li>
+      <li><a href="${AE_HOME}" rel="noopener">Austin Energy: Rebates for home solar systems</a></li>
+      <li><a href="https://pvwatts.nrel.gov/" rel="noopener">NREL: PVWatts calculator</a></li>
+    </ul>
+    <p class="note">Checked on 17 November 2026.</p>
+  </div>
+</section>`,
+  jsonld: [
+    { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: vosFaq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) },
+    { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Solar companies in Austin', item: `${SITE}/` },
+      { '@type': 'ListItem', position: 2, name: 'Cost and rebates', item: `${SITE}/solar-cost-austin/` },
+      { '@type': 'ListItem', position: 3, name: 'Value of Solar', item: `${SITE}/value-of-solar-austin-energy/` } ] },
+  ],
+}));
+
 // ---------- Area pages ----------
 const AE_AREA_SRC = ['Austin Energy: service area', 'https://austinenergy.com/residential/residential-services'];
 const AREA_PAGES = [
   { slug: 'south-austin', area: 'south', name: 'South Austin', h1: 'Solar companies in South Austin',
     places: 'South Austin, Sunset Valley, Manchaca and the 78704, 78745 and 78744 ZIP codes',
-    utility: 'Most homes here are Austin Energy customers, so the $2,500 rebate applies when you hire a participating contractor. Austin Energy lists Sunset Valley and Manchaca in its service area besides the City of Austin.',
+    utility: 'Most homes here are Austin Energy customers, so the $4,000 rebate applies when you hire a participating contractor. Austin Energy lists Sunset Valley and Manchaca in its service area besides the City of Austin.',
     refs: [AE_AREA_SRC] },
   { slug: 'north-austin-round-rock', area: 'north', name: 'North Austin, Round Rock and Pflugerville', h1: 'Solar companies in North Austin, Round Rock and Pflugerville',
     places: 'North Austin, Pflugerville, Round Rock, Cedar Park and Leander',
@@ -457,7 +619,7 @@ const AREA_PAGES = [
     refs: [AE_AREA_SRC, ['SolarReviews: Texas solar incentives', 'https://www.solarreviews.com/solar-incentives/texas'], ['NuWatt: Pflugerville solar costs', 'https://nuwattenergy.com/en/texas/pflugerville-solar-cost-2026']] },
   { slug: 'west-austin-hill-country', area: 'west', name: 'West Austin and the Hill Country', h1: 'Solar companies in West Austin and the Hill Country',
     places: 'West Austin, West Lake Hills, Rollingwood, Bee Cave, Lakeway, Oak Hill and Dripping Springs',
-    utility: 'Austin Energy lists Bee Cave, Lakeway, Rollingwood, West Lake Hills and the Village of the Hills in its service area, so the $2,500 rebate is available there. Farther west many homes are served by Pedernales Electric Cooperative, which has no comparable solar rebate.',
+    utility: 'Austin Energy lists Bee Cave, Lakeway, Rollingwood, West Lake Hills and the Village of the Hills in its service area, so the $4,000 rebate is available there. Farther west many homes are served by Pedernales Electric Cooperative, which has no comparable solar rebate.',
     refs: [AE_AREA_SRC, ['Neuhaus Realty: solar panels guide Austin 2026', 'https://neuhausre.com/guides/solar-panels-guide-austin/']] },
   { slug: 'buda-san-marcos', area: 'hays', name: 'Buda, Kyle and San Marcos', h1: 'Solar companies in Buda, Kyle and San Marcos',
     places: 'Buda, Kyle, San Marcos and the rest of Hays County',
@@ -590,7 +752,7 @@ ${BIG.map((b) => `          <tr><td>${bigLink(b)}</td>${b.pay.map((v) => `<td>${
         </tbody>
       </table>
     </div>
-    <p class="note">With a lease or PPA the company owns the panels. In 2026 that is the only way homeowners still get value from the federal tax credit. The contract runs 20 to 25 years and has to pass to a buyer if you sell, and you should ask Austin Energy whether its rebate applies to your contract type. See <a href="/solar-cost-austin/">Austin solar costs and rebates</a>.</p>
+    <p class="note">With a lease or PPA the company owns the panels. In 2026 that is the only way homeowners still get value from the federal tax credit. Austin Energy does not allow third-party PPAs in its service territory, so there the choice is buying, a loan or a lease. A lease runs 20 to 25 years and has to pass to a buyer if you sell. See <a href="/solar-cost-austin/">Austin solar costs and rebates</a>.</p>
 
     <h2 style="margin-top:2.5rem">Before you sign with a large provider</h2>
     <div class="prose">
@@ -599,7 +761,7 @@ ${BIG.map((b) => `          <tr><td>${bigLink(b)}</td>${b.pay.map((v) => `<td>${
         <li><strong>Texas Attorney General</strong> announced in April 2026 an investigation into the sales practices of several residential installers, including Freedom Forever and Sunrun. An investigation is not a finding of wrongdoing.</li>
         <li><strong>Sunrun and Palmetto</strong> give their longest warranties to lease and PPA customers. If you buy, check which terms apply to you.</li>
         <li><strong>Palmetto</strong> does not install itself: a partner company in its network does the work, so ask which one.</li>
-        <li><strong>Longhorn Solar</strong> was not on Austin Energy's participating contractor list when we checked, so it cannot file for the $2,500 rebate.</li>
+        <li><strong>Longhorn Solar</strong> was not on Austin Energy's participating contractor list when we checked, so it cannot file for the $4,000 rebate.</li>
       </ul>
     </div>
 
@@ -620,7 +782,7 @@ ${BIG_SOURCES.map(([t, u]) => `      <li><a href="${u}" rel="noopener">${esc(t)}
 write('solar-cost-austin/index.html', page({
   path: '/solar-cost-austin/',
   title: 'Solar Cost and Rebates in Austin, TX (2026 Guide)',
-  description: 'What solar power companies in Austin, TX charge per watt in 2026, how the $2,500 Austin Energy rebate works, and what changed with the federal tax credit.',
+  description: 'What solar power companies in Austin, TX charge per watt in 2026, how the $4,000 Austin Energy rebate works, and what changed with the federal tax credit.',
   current: 'cost',
   body: `
 <section class="page-head">
@@ -647,9 +809,9 @@ write('solar-cost-austin/index.html', page({
     <p>At $2.84 per watt, common system sizes work out as follows before any rebate:</p>
     <div class="table-scroll" style="margin:1.5rem 0">
       <table>
-        <thead><tr><th>System size</th><th class="num">Price at $2.84 per watt</th><th class="num">After $2,500 rebate</th></tr></thead>
+        <thead><tr><th>System size</th><th class="num">Price at $2.84 per watt</th><th class="num">After $4,000 rebate</th></tr></thead>
         <tbody>
-          ${[5, 7, 9, 12].map((kw) => `<tr><td>${kw} kW</td><td class="num">$${(kw * 2840).toLocaleString('en-US')}</td><td class="num">$${(kw * 2840 - 2500).toLocaleString('en-US')}</td></tr>`).join('\n          ')}
+          ${[5, 7, 9, 12].map((kw) => `<tr><td>${kw} kW</td><td class="num">$${(kw * 2840).toLocaleString('en-US')}</td><td class="num">$${(kw * 2840 - 4000).toLocaleString('en-US')}</td></tr>`).join('\n          ')}
         </tbody>
       </table>
     </div>
@@ -658,21 +820,14 @@ write('solar-cost-austin/index.html', page({
     ${calculator}
 
     <h2>The Austin Energy solar rebate</h2>
-    <p>Austin Energy pays residential customers a flat $2,500 rebate for a qualifying solar installation. To receive it you must:</p>
-    <ol>
-      <li>Be an Austin Energy residential customer.</li>
-      <li>Complete Austin Energy's online solar education course.</li>
-      <li>Hire an Austin Energy participating solar contractor, who applies on your behalf.</li>
-      <li>Receive a letter of intent from Austin Energy before installation starts.</li>
-      <li>Pass Austin Energy's final inspection.</li>
-    </ol>
-    <p>Austin Energy recommends getting at least three estimates from different participating contractors. The current list is on <a href="https://austinenergy.com/green-power/solar-solutions/participating-solar-contractors" rel="noopener">austinenergy.com</a>. When we checked on 17 November 2026 it named ${AE_TOTAL} firms. ${companies.filter((c) => c.aeListed).length} of the ${companies.length} companies in this directory are on it, and each profile says whether it is.</p>
+    <p>Since 1 October 2026 Austin Energy pays a <strong>$4,000 rebate</strong> for a qualifying home solar system. You need an Austin Energy residential account, a new system of at least 3 kW (DC) that is mostly unshaded, and a participating solar contractor, who applies for you. The rebate confirmation letter has to arrive before installation starts. Step by step: <a href="/austin-energy-solar-rebate/">how to get the Austin Energy solar rebate</a>.</p>
+    <p>The current contractor list is on <a href="https://austinenergy.com/green-power/solar-solutions/participating-solar-contractors" rel="noopener">austinenergy.com</a>. When we checked on 17 November 2026 it named ${AE_TOTAL} firms. ${companies.filter((c) => c.aeListed).length} of the ${companies.length} companies in this directory are on it, and each profile says whether it is.</p>
 
     <h2>Value of Solar instead of net metering</h2>
-    <p>Austin Energy does not use traditional net metering. It credits the electricity your system produces at a set Value of Solar rate, which installers reported at about 9.9 cents per kWh in 2026. The rate is reviewed periodically, so check Austin Energy's current rate schedule before estimating your savings.</p>
+    <p>Austin Energy does not use traditional net metering. It credits every kilowatt-hour your system produces at the Value of Solar rate, <strong>12.89 cents per kWh</strong> for homes since 1 October 2026, and bills everything your home uses at normal rates. More in <a href="/value-of-solar-austin-energy/">how the Value of Solar rate works</a>.</p>
 
     <h2>Federal tax credit</h2>
-    <p>The 30% federal tax credit for homeowner-owned residential systems ended on December 31, 2025, according to several installer and industry sources. Leases and power purchase agreements (PPAs) are different: the company that owns the system can still claim the credit under Section 48E until the end of 2027, so some of that value may appear in the monthly price. Check the contract for who owns the system. Leased systems and power purchase agreements can still benefit from a separate credit claimed by the provider. Treat any 2026 quote that subtracts 30% for a purchased home system with caution, and confirm your situation with a tax professional.</p>
+    <p>The 30% federal tax credit for homeowner-owned residential systems ended on December 31, 2025, according to several installer and industry sources. With a lease, the company that owns the system can still claim a credit under Section 48E until the end of 2027, and some of that value may show up in the monthly price. Austin Energy does not allow third-party power purchase agreements (PPAs) in its service territory. Treat any 2026 quote that subtracts 30% for a purchased home system with caution, and confirm your situation with a tax professional.</p>
 
     <h2>Why quotes from Austin solar companies differ</h2>
     <ul>

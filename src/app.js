@@ -131,7 +131,7 @@
       calc.querySelector('[data-calc-size]').textContent = kw + ' kW';
       calc.querySelector('[data-calc-avg]').textContent = usd(w * 2.84);
       calc.querySelector('[data-calc-range]').textContent = usd(w * 2.22) + '–' + usd(w * 3.32);
-      calc.querySelector('[data-calc-net]').textContent = usd(w * 2.84 - 2500);
+      calc.querySelector('[data-calc-net]').textContent = usd(w * 2.84 - 4000);
       // Bar scale: $0 to the top of the range for the largest system (15 kW)
       var max = 15000 * 3.32;
       bar.style.setProperty('--lo', (w * 2.22 / max * 100) + '%');

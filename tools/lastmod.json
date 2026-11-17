@@ -1,310 +1,318 @@
 {
  "/": {
-  "hash": "25a9e3466666631ecad1a47e01397884ba9bcdef",
+  "hash": "c9cd5c5f0e7541b9d22c1e70517c07cd9ea5f81b",
   "date": "2026-11-17"
  },
  "/about/": {
-  "hash": "135753ddbda8b67d7d8ae69052322267fc82239e",
+  "hash": "ffffda89ba0161a8e0dd5db133dbb0425450c934",
+  "date": "2026-11-17"
+ },
+ "/austin-energy-solar-rebate/": {
+  "hash": "e1d2cb41fe04fcce4db13bebe78c5af40288aad2",
   "date": "2026-11-17"
  },
  "/biggest-solar-companies-austin/": {
-  "hash": "1587b3a5f3171cbe82eb810d818c96796a251587",
+  "hash": "e3c92ea3ce052b74c58f37292e9e4b3787e7a26b",
   "date": "2026-11-17"
  },
  "/companies/512-solar/": {
-  "hash": "f16dae475d4416f9e3d271fc2c6ff6923de5e7ab",
+  "hash": "7a2c16805b58b9503eeae4ea1009e57232f708e1",
   "date": "2026-11-17"
  },
  "/companies/abundant-solar/": {
-  "hash": "7ee03f5bfeda4169ea40b0aac20b4481bd85a634",
+  "hash": "bc289a1667f686691df4d8dc04a8b036c88507e5",
   "date": "2026-11-17"
  },
  "/companies/alba-energy/": {
-  "hash": "73bd690955693f5031d02a1cc878eb9be72b9f71",
+  "hash": "0651c5eb65ba4314bd2e1b88feb0fdbca72d1a85",
   "date": "2026-11-17"
  },
  "/companies/atma-energy/": {
-  "hash": "c0e7707282fdb1e6c1d435c0a56fd83cfab59cac",
+  "hash": "cdcc600817c9017fdf82bdb91ac8841090b0c91a",
   "date": "2026-11-17"
  },
  "/companies/atx-solar/": {
-  "hash": "d742788ce9b6ebfb8774c68562a891fb28e30ebb",
+  "hash": "8d7468891be1764a08e510c64aae4935d0e44678",
   "date": "2026-11-17"
  },
  "/companies/austin-discount-solar/": {
-  "hash": "487db3ba36c7f700f338bbe4235a0b3fcc059419",
+  "hash": "cdd8392a46f30ff18c95556b313dc4ac8caaca68",
   "date": "2026-11-17"
  },
  "/companies/awake-solar/": {
-  "hash": "6f69ae4579f64142f1a68a395d895b1202a2bf9f",
+  "hash": "86e9657382fd2b8f55ea11ec69d2cbece6984a5b",
   "date": "2026-11-17"
  },
  "/companies/axis-solar/": {
-  "hash": "59cb43ad6b00321cb13045a1177aedd691becf2d",
+  "hash": "190b4f67e80c2226df87cc7603b84f09747f9376",
   "date": "2026-11-17"
  },
  "/companies/big-sun-solar/": {
-  "hash": "c448fde86bfe202a2f72c38e9f2536d224c0a8b4",
+  "hash": "70cebb1169978f1532e4226cd604f64ed3ae8b9b",
   "date": "2026-11-17"
  },
  "/companies/boost-electric/": {
-  "hash": "0209bc05fd5263c4cd28d46a8207fe53c3ba499e",
+  "hash": "e2762f44081c4a4500b095fba2ec171969dee709",
   "date": "2026-11-17"
  },
  "/companies/centrica-business-solutions/": {
-  "hash": "cf2ad8da38f011e12bdb2e5460a22548759e13b0",
+  "hash": "289ed2536685046df1c3d9129643074da3031887",
   "date": "2026-11-17"
  },
  "/companies/circle-l-solar/": {
-  "hash": "d7c5d9f552b632fe1af56af07f86d920c3d52e14",
+  "hash": "f963018f116633d0c1b809084c4d511cb01434f7",
   "date": "2026-11-17"
  },
  "/companies/dawn-to-dusk-solar/": {
-  "hash": "8ebb036a56c47709af0b1f75d8775ecf3aea7e86",
+  "hash": "42f9a4979ed0db63bd8957361737deb907e593b7",
   "date": "2026-11-17"
  },
  "/companies/dkd-energy/": {
-  "hash": "1a260f9d87d74c60eb2c0ccc4d38593db36c8ccd",
+  "hash": "0e75de2dd758cd7d64a1404e6c8135f5c77d6e47",
   "date": "2026-11-17"
  },
  "/companies/dws-energy/": {
-  "hash": "536ca3e3fa365f50c807822ad9f14782d0f4de84",
+  "hash": "5e0d6f6a02e9d81a15f939fbf835049e617c7509",
   "date": "2026-11-17"
  },
  "/companies/dynamic-energy-solutions/": {
-  "hash": "37f78951777d80e2d8ad64627e07a8e139ba855f",
+  "hash": "bf34e989b71fc67617aba1194c5d912a46d4f6c7",
   "date": "2026-11-17"
  },
  "/companies/elk-electric/": {
-  "hash": "30dcea1e6b69765a0b613fd138c28a5183d53556",
+  "hash": "38fbdc6e5a6464204f5d113d65a790c9013dc791",
   "date": "2026-11-17"
  },
  "/companies/energy-solutions-direct/": {
-  "hash": "4fa1b4122b8a37608b0a7f5d0464bc6a3cb8e468",
+  "hash": "414f255cabbdd2922606b46a4c20d0de4187e516",
   "date": "2026-11-17"
  },
  "/companies/energyrey/": {
-  "hash": "70f35a0b553b8170312b4d61a6f14992ccd7215c",
+  "hash": "d4c772a13f7a9cbce96fbe6d77c1e025294b77f6",
   "date": "2026-11-17"
  },
  "/companies/fastrac-energy-services/": {
-  "hash": "5d194cbcabeba8eae1230bac280a17602dd07ea6",
+  "hash": "ad5b12244341dad0aa6f6f1fa5f1a82e9b2b943d",
   "date": "2026-11-17"
  },
  "/companies/freedom-forever-texas/": {
-  "hash": "14f097642b6ef2e69d4334f17443cd3f18084a5a",
+  "hash": "ffb7e49a5c2d21e5c4819ed1169dcf678cf2d90e",
   "date": "2026-11-17"
  },
  "/companies/freedom-solar-power/": {
-  "hash": "9cdbb5e948b48f0b2a6a413a28a3d070cd2c79ce",
+  "hash": "7e073078348e5dd1c23d06854a911f66ab7de7dd",
   "date": "2026-11-17"
  },
  "/companies/gaf-energy/": {
-  "hash": "41fba71661d1583e006bfcfb79620cdc79791779",
+  "hash": "c45cd80233b9cf5fd07516f7d075a027a29f2a1e",
   "date": "2026-11-17"
  },
  "/companies/girasolve-energy/": {
-  "hash": "6f0165c9edce08b7b69d5a42b94e4614eb61fb7a",
+  "hash": "78f3e262dfb799d38601b8fee735ad45ee0d3b70",
   "date": "2026-11-17"
  },
  "/companies/good-faith-energy/": {
-  "hash": "0201e0e19b973cd249b6dc8e17b09ee7c7c2426a",
+  "hash": "6e2377df088e9ff9e2e4c7c73f93c06517c5bc8f",
   "date": "2026-11-17"
  },
  "/companies/greenbelt-solar/": {
-  "hash": "a057d04861c9857f7e164539f94be5a19870f462",
+  "hash": "715fa4fadf88e1757d78791475aaea15f962d800",
   "date": "2026-11-17"
  },
  "/companies/greenstar-power/": {
-  "hash": "b8f58b6d1fe2ff6e8e70d27772876d86321c5ca9",
+  "hash": "02ebf5726821a89a52a6e323bb9525b75b7d7b0e",
   "date": "2026-11-17"
  },
  "/companies/hesolar/": {
-  "hash": "25bb9198eee88824b0dbc5820da823f3911d53e3",
+  "hash": "108ce6ede9f3ff82484c42f0a35317d63fa7fb6d",
   "date": "2026-11-17"
  },
  "/companies/holt-renewables/": {
-  "hash": "600f305cd65dea8fdd511a6cb1fc99e1b905877b",
+  "hash": "649029f5609c5cd4a15dafec4423dfe94b899756",
   "date": "2026-11-17"
  },
  "/companies/honest-solar/": {
-  "hash": "897a6d05e310ec7bc3eb1ece70b34d1c60a28fda",
+  "hash": "368ad2771ed7ccaf4e9c1bba940897836792560b",
   "date": "2026-11-17"
  },
  "/companies/icon-power/": {
-  "hash": "f8baa0641cecd7334aad549c028683797fb52ffb",
+  "hash": "1c90244cceba045e0ef66887ee68b3cc42d5b521",
   "date": "2026-11-17"
  },
  "/companies/integratesun/": {
-  "hash": "1b5d7f7fa3eeab67194393c5f54a62d5f772802c",
+  "hash": "09f080cba11fc77a15ded44aecef50d7fd654f14",
   "date": "2026-11-17"
  },
  "/companies/ion-solar/": {
-  "hash": "37949c92e87b4c3dfa883776e9fde1e0558c857f",
+  "hash": "8db8e041b35ca97e53df7e06b4d687fe7516389b",
   "date": "2026-11-17"
  },
  "/companies/jiles-solar-power/": {
-  "hash": "dfe77ba57865d8c82bc9e885cff783c2d9b412fe",
+  "hash": "16617f1b4c03a04c6dd4e16493b269eca37f1ef3",
   "date": "2026-11-17"
  },
  "/companies/lighthouse-solar/": {
-  "hash": "67aa1fb7deba183bd2fe4dd8456adcc77ca3cca2",
+  "hash": "7536969547eaac6476d5fb027682dfa8bd1bb855",
   "date": "2026-11-17"
  },
  "/companies/longhorn-solar/": {
-  "hash": "5531521ee4d864158493ed3af42589d0fc5b83dc",
+  "hash": "afb2ab3498394e658f7f880405f50ba2ff2b4335",
   "date": "2026-11-17"
  },
  "/companies/m2-power-solutions/": {
-  "hash": "c1fbd0ee3b3cc0768568785a740dab3549ca2f24",
+  "hash": "a8bf97378674f62b92ab7d385f8e1dd4bbbe4696",
   "date": "2026-11-17"
  },
  "/companies/meridian-solar/": {
-  "hash": "aae248254b6d36d77dd13fbd9159cc0d5d1f5692",
+  "hash": "e9348814b20957f9619a8501c5387e29d9362606",
   "date": "2026-11-17"
  },
  "/companies/metco-engineering/": {
-  "hash": "d194129c0314047fac48631e1e9ec9fa3ef7c9e6",
+  "hash": "b5da08cb1ecad48ea852fc5a1fbf39f3eff0beba",
   "date": "2026-11-17"
  },
  "/companies/native-solar/": {
-  "hash": "878f2d1a2c28329b3be362c22c17f567290348bc",
+  "hash": "f99edfc0b347c428b1bd8f93e4362c4161ebde5f",
   "date": "2026-11-17"
  },
  "/companies/now-energy/": {
-  "hash": "e795efa110141559090e8dd1062902244f4fb412",
+  "hash": "4319d79029247bbfddcaddc704a1f368ba6a91d0",
   "date": "2026-11-17"
  },
  "/companies/nuwatt-energy/": {
-  "hash": "3475deab32bc46c1d8976bbfe590d57eadd42ff2",
+  "hash": "d77d2464892b335badb51d1d0c44f7ef73ea10d4",
   "date": "2026-11-17"
  },
  "/companies/one80-solar/": {
-  "hash": "4066baed461b2b4732a4c54f5761687cabac8fc6",
+  "hash": "6225a942a78dcafdbd08aac93f403fff3f112631",
   "date": "2026-11-17"
  },
  "/companies/optimum-solar-usa/": {
-  "hash": "8c8ed6fa96ac6f0c1da778cf12acb29982560c35",
+  "hash": "d4701c26d46cde71ea77925a5ec834b35deea93d",
   "date": "2026-11-17"
  },
  "/companies/our-world-energy/": {
-  "hash": "e387228dcc4fb74b05ed6cfa739e3d12388bb62a",
+  "hash": "ebeb920ec2ba63085a325c40897b1aab6c259c5c",
   "date": "2026-11-17"
  },
  "/companies/palmetto/": {
-  "hash": "3aae130f9de171fb01790f74cfee27909f22223a",
+  "hash": "cb4f471679bbc50a7b983996909776c5146f09ca",
   "date": "2026-11-17"
  },
  "/companies/power-home-remodeling-group/": {
-  "hash": "269b3024638a7c3c720bf2e7f473947bcf395bd5",
+  "hash": "f319d89b8c5d87d365a7e5b081604aee3717cbc2",
   "date": "2026-11-17"
  },
  "/companies/powerfin/": {
-  "hash": "dc56a95029c530a95d08a4d9e618646d790fa685",
+  "hash": "f5e25e8c90f91b5fc2bd5c0284798a3302a85996",
   "date": "2026-11-17"
  },
  "/companies/project-solar/": {
-  "hash": "38cb8ded44d57339974b26508ddbee9014806680",
+  "hash": "249645dcb8bdd3101dfe375b5341cb60f0d5528b",
   "date": "2026-11-17"
  },
  "/companies/renergy-solar/": {
-  "hash": "fbdd92a56a6360596621e17e7b614141cec2415d",
+  "hash": "303fbc2ab794397b974398e09ffdcb992147293a",
   "date": "2026-11-17"
  },
  "/companies/robco-construction/": {
-  "hash": "c00e262e5be78f648ebabe334cc286b17aff2a8d",
+  "hash": "0ba5e92938ed55010db21901f1b9caf649a80199",
   "date": "2026-11-17"
  },
  "/companies/roofio/": {
-  "hash": "cde1861d9adae59dd4dc5e8c470e3c4f44fb033b",
+  "hash": "91ae578ba6f44d22003e4074a1d083501029a634",
   "date": "2026-11-17"
  },
  "/companies/silver-electric-and-solar/": {
-  "hash": "79d66ca268b7951972628283b23c9b8892a12504",
+  "hash": "4a45c959a461156c852ccbce12dbc4c99e3a8092",
   "date": "2026-11-17"
  },
  "/companies/solar-centex/": {
-  "hash": "fe4929435bc5715244eab7792f2f835a5de6d206",
+  "hash": "7395e795cc808e1ad0a4cf9fcc3284c069463628",
   "date": "2026-11-17"
  },
  "/companies/solar-edge-pros/": {
-  "hash": "5b5c203dfe8c5c6d79b01108b18072610ddcd6df",
+  "hash": "a86e99d61bf85a3167eac1af28ec99430a87feb2",
   "date": "2026-11-17"
  },
  "/companies/south-texas-solar-systems/": {
-  "hash": "8e169709783edd20f2870f57427ae8a911eabac1",
+  "hash": "194aaa12cc42a998c8fde7948c36ee80d8db4d10",
   "date": "2026-11-17"
  },
  "/companies/spear-commercial-and-industrial/": {
-  "hash": "7da6600a7131a3141c8220f46a108c87df9a14cd",
+  "hash": "bcfe144325c66c7a9abd3a651e60bf562c87aee5",
   "date": "2026-11-17"
  },
  "/companies/suncharge-solar/": {
-  "hash": "c77f1cade21203963b4ddb03733cc222f9c01e5d",
+  "hash": "82650e45fe7495c599ff596320cf6fe6ce4dcebb",
   "date": "2026-11-17"
  },
  "/companies/suncheck/": {
-  "hash": "3767b6abb66f761cc0daf9a117afc7733ca486cf",
+  "hash": "e49135e3ae27a67d53620ed4064f45db0bd55bcc",
   "date": "2026-11-17"
  },
  "/companies/sunrun/": {
-  "hash": "a8560e7db4f48bbde4842cf87a234e26ec5d2f12",
+  "hash": "ab762b4be02eb9485d6b07f8a4e90f6dcac6702c",
   "date": "2026-11-17"
  },
  "/companies/sunshine-renewable-solutions/": {
-  "hash": "7e4b253791e3ffb0311a569c7996c17be1b4d44f",
+  "hash": "c743fd3e58b3c9858eb02651d98e5553f105f33d",
   "date": "2026-11-17"
  },
  "/companies/tesla-energy/": {
-  "hash": "1070ac52c723c6bd16388d08127bdc13a5e07d21",
+  "hash": "6c2e17b49da58059c50184bba342d1a8f12151b9",
   "date": "2026-11-17"
  },
  "/companies/texas-green-energy/": {
-  "hash": "8865fd0d8835ada3f5e5cb40c6df21f0006b4acb",
+  "hash": "336fa7caad2219ca313231bf1d6bafdeaddd6e1b",
   "date": "2026-11-17"
  },
  "/companies/texas-solar-guys/": {
-  "hash": "0768eed5b16c551e72e581b3ad3d07439c6fe073",
+  "hash": "b5436e3a3f8c6d7f2c8a8973afa46a63c12b7ff3",
   "date": "2026-11-17"
  },
  "/companies/texas-solar-power-company/": {
-  "hash": "721d8bdbd19e0f75eb8b307aca163db1da51111b",
+  "hash": "fe4c1c8b668aed4378357c07fb4ce38bb6b16abe",
   "date": "2026-11-17"
  },
  "/companies/texas-solar-professional/": {
-  "hash": "ce1cb20368bde41549591ddfee8d6ca754f36380",
+  "hash": "bccac647118eaad853776fe80c03ce3cebf6d2d4",
   "date": "2026-11-17"
  },
  "/companies/the-american-power-company/": {
-  "hash": "01a7e5daa351a8995a5ec57cf1328f5cda6b0d30",
+  "hash": "d6022be460e30a69ab685ed7e45e3af141068f39",
   "date": "2026-11-17"
  },
  "/companies/trismart-solar/": {
-  "hash": "9116ab3cd9f0c767c3afda0bdca12c96a0caff59",
+  "hash": "bc8afa5ee10c8914689a6d366ce92dccfecb155f",
   "date": "2026-11-17"
  },
  "/companies/volthouse-electric/": {
-  "hash": "9d7ac1f073402b4501310c713299755259286004",
+  "hash": "e61220d63923b4aee610fc5cacd7b72b92eb08d5",
   "date": "2026-11-17"
  },
  "/solar-companies/buda-san-marcos/": {
-  "hash": "98ce4f417bdf579eae1663fd42490712521ef8fd",
+  "hash": "08e0c7cbd187ab82b46c529efa5f40347dd6de72",
   "date": "2026-11-17"
  },
  "/solar-companies/north-austin-round-rock/": {
-  "hash": "410e849d30ee00196c0ba67bf87ee00c43786eca",
+  "hash": "8b2b0355fc7ab4c484d12c53b62775c4001c6fc8",
   "date": "2026-11-17"
  },
  "/solar-companies/south-austin/": {
-  "hash": "fabeab84600b6a028784e85b27fdf681d2fc56d6",
+  "hash": "89f4d814c9af482172aeefebad28ba08291ab9fb",
   "date": "2026-11-17"
  },
  "/solar-companies/west-austin-hill-country/": {
-  "hash": "d4581e983027127cbe2b9c45632bec42a7b6d18e",
+  "hash": "7f9e5160f6bdc127eb95ef08746265f780f22f1a",
   "date": "2026-11-17"
  },
  "/solar-cost-austin/": {
-  "hash": "978a2fa987ec7e1faad0a861d9871315e3931e7b",
+  "hash": "a19261cc45ce3ed544a296062dcd569b7e638fca",
+  "date": "2026-11-17"
+ },
+ "/value-of-solar-austin-energy/": {
+  "hash": "a838b3a50b5311f1040d6bbee1a61aeb885d440b",
   "date": "2026-11-17"
  }
 }
