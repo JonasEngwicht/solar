@@ -1,13 +1,17 @@
 // Builds the static site into ./public from data/companies.json.
 // Run: node build.mjs
 import { readFileSync, writeFileSync, mkdirSync, rmSync, copyFileSync, existsSync, readdirSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = dirname(fileURLToPath(import.meta.url));
 const out = join(root, 'public');
 const SITE = 'https://austintexassolar.com';
-const UPDATED = '2026-11-16';
+const UPDATED = new Date().toISOString().slice(0, 10);
+const INDEXNOW_KEY = 'c52a1aa9c7b4e088207fd33f204d555b';
+const PAGE_HASH = new Map(); // url -> content hash, for per-page lastmod
+const NOINDEX = new Set();
 const UPDATED_TEXT = 'November 2026';
 const companies = JSON.parse(readFileSync(join(root, 'data/companies.json'), 'utf8'));
 
@@ -88,13 +92,15 @@ function logo(c, cls = '') {
 }
 
 function write(path, html) {
+  if (path.endsWith('index.html')) PAGE_HASH.set('/' + path.replace(/index\.html$/, ''), createHash('sha1').update(html).digest('hex'));
   const file = join(out, path);
   mkdirSync(dirname(file), { recursive: true });
   writeFileSync(file, html);
 }
 
-function page({ path, title, description, body, current = '', jsonld = [], head = '' }) {
+function page({ path, title, description, body, current = '', jsonld = [], head = '', noindex = false }) {
   const canonical = SITE + path;
+  if (noindex) NOINDEX.add(path);
   const nav = [
     ['/#directory', 'Directory', 'directory'],
     ['/biggest-solar-companies-austin/', 'Compare', 'big'],
@@ -113,6 +119,12 @@ function page({ path, title, description, body, current = '', jsonld = [], head 
 <meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(description)}">
 <meta property="og:url" content="${canonical}">
+<meta property="og:site_name" content="Austin Texas Solar">
+<meta property="og:image" content="${SITE}/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+${noindex ? '<meta name="robots" content="noindex, follow">' : ''}
 <meta name="theme-color" content="#17224d">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -201,7 +213,7 @@ const home = `
   ${heroArt()}
   <div class="wrap">
     <h1>Solar companies in Austin, Texas</h1>
-    <p class="lede">${companies.length} installers that serve Austin, compared by age, price level, strengths and how to reach them. No lead forms and no paid rankings.</p>
+    <p class="lede">The independent list of solar companies Austin homeowners can compare: ${companies.length} installers that serve Austin, compared by age, price level, strengths and how to reach them. No lead forms and no paid rankings.</p>
     <div class="hero-actions">
       <a class="btn btn-sun" href="#directory">Browse the directory</a>
       <a class="btn btn-ghost" href="/solar-cost-austin/">See Austin solar costs</a>
@@ -345,6 +357,8 @@ write('index.html', page({
   head: '<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">',
   jsonld: [
     { '@context': 'https://schema.org', '@type': 'WebSite', name: 'Austin Texas Solar', url: SITE + '/' },
+    { '@context': 'https://schema.org', '@type': 'Organization', name: 'Austin Texas Solar', url: SITE + '/', logo: SITE + '/favicon.svg',
+      description: 'Independent directory of solar companies in Austin, Texas. Listings are free and no company pays for placement.' },
     { '@context': 'https://schema.org', '@type': 'ItemList', name: 'Solar companies in Austin, Texas', numberOfItems: companies.length,
       itemListElement: companies.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.name, url: `${SITE}/companies/${c.slug}/` })) },
     { '@context': 'https://schema.org', '@type': 'FAQPage',
@@ -646,13 +660,22 @@ write('404.html', page({
 mkdirSync(join(out, 'assets'), { recursive: true });
 copyFileSync(join(root, 'src/styles.css'), join(out, 'assets/styles.css'));
 copyFileSync(join(root, 'src/app.js'), join(out, 'assets/app.js'));
+copyFileSync(join(root, 'src/og.jpg'), join(out, 'assets/og.jpg'));
+write(`${INDEXNOW_KEY}.txt`, INDEXNOW_KEY);
 if (existsSync(join(root, 'logos-opt'))) {
   mkdirSync(join(out, 'assets/logos'), { recursive: true });
   for (const f of readdirSync(join(root, 'logos-opt'))) if (f.endsWith('.webp')) copyFileSync(join(root, 'logos-opt', f), join(out, 'assets/logos', f));
 }
 write('favicon.svg', `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="7" fill="#17224d"/><circle cx="16" cy="16" r="8" fill="#ffc531"/></svg>`);
 write('robots.txt', `User-agent: *\nAllow: /\n\nSitemap: ${SITE}/sitemap.xml\n`);
-const urls = ['/', '/biggest-solar-companies-austin/', '/solar-cost-austin/', '/about/', ...companies.map((c) => `/companies/${c.slug}/`)];
-write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((u) => `  <url><loc>${SITE}${u}</loc><lastmod>${UPDATED}</lastmod></url>`).join('\n')}\n</urlset>\n`);
+// Sitemap: every indexable page, lastmod = the day its HTML last changed (tracked in tools/lastmod.json).
+const LASTMOD_FILE = join(root, 'tools/lastmod.json');
+const known = existsSync(LASTMOD_FILE) ? JSON.parse(readFileSync(LASTMOD_FILE, 'utf8')) : {};
+const lastmod = {};
+for (const [u, h] of [...PAGE_HASH].sort()) lastmod[u] = known[u]?.hash === h ? known[u] : { hash: h, date: UPDATED };
+writeFileSync(LASTMOD_FILE, JSON.stringify(lastmod, null, 1) + '\n');
+const urls = [...PAGE_HASH.keys()].filter((u) => u !== '/404.html' && !NOINDEX.has(u));
+urls.sort((a, b) => (a === '/' ? -1 : b === '/' ? 1 : (a.startsWith('/companies/') - b.startsWith('/companies/')) || a.localeCompare(b)));
+write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((u) => `  <url><loc>${SITE}${u}</loc><lastmod>${lastmod[u].date}</lastmod></url>`).join('\n')}\n</urlset>\n`);
 
 console.log(`Built ${urls.length} pages into public/`);
