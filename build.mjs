@@ -154,6 +154,7 @@ ${body}
 }
 
 // ---------- Home ----------
+const AE_TOTAL = 55; // austinenergy.com participating solar contractors, checked 17 Nov 2026
 const localCount = companies.filter((c) => c.type === 'local').length;
 const oldest = companies.filter((c) => c.founded).sort((a, b) => a.founded - b.founded)[0];
 
@@ -185,7 +186,7 @@ function row(c, i) {
 }
 
 const faqs = [
-  ['How many solar companies are there in Austin?', `This directory lists ${companies.length} solar companies that serve Austin, of which ${localCount} are based in the Austin area. Austin Energy's own list of participating solar contractors had about 53 firms when we checked on 17 November 2026. The page itself is dated April 2025, so confirm it before you rely on it.`],
+  ['How many solar companies are there in Austin?', `This directory lists ${companies.length} solar companies that serve Austin, of which ${localCount} are based in the Austin area. Austin Energy's own list of participating solar contractors had ${AE_TOTAL} firms when we checked on 17 November 2026. The page itself is dated April 2025, so confirm it before you rely on it.`],
   ['Which Austin Texas solar companies qualify for the Austin Energy rebate?', 'Only installers on Austin Energy\'s participating solar contractor list can apply for the rebate on your behalf. The list changes, so check it on austinenergy.com or ask the installer to confirm in writing before you sign.'],
   ['What do solar power companies in Austin, TX charge?', 'Published averages for Austin range from about $2.22 to $3.32 per watt, with SolarReviews putting the 2026 average at $2.84 per watt. Local installers are often reported to be cheaper than national brands for comparable equipment. Always compare quotes on price per watt.'],
   ['Is a local or a national solar company better?', 'Local companies usually have their own crews, know Austin Energy\'s permitting and interconnection process, and are easier to reach for service. National companies offer more lease and PPA options. Whichever you choose, check who actually installs the system and who honours the workmanship warranty.'],
@@ -267,12 +268,12 @@ ${companies.map(row).join('\n')}
 <section class="section section-sky" id="compare">
   <div class="wrap">
     <h2>Austin Texas solar companies compared</h2>
-    <p class="section-intro">The Austin-area installers side by side. Price level is shown only where a company publishes prices or states its positioning; everyone else quotes per project.</p>
+    <p class="section-intro">The Austin-area installers we have reviewed in detail, side by side. Newly added Austin Energy contractors appear in the directory above and get a row here once reviewed. Price level is shown only where a company publishes prices or states its positioning; everyone else quotes per project.</p>
     <div class="table-scroll">
       <table>
         <thead><tr><th>Company</th><th>Based in</th><th class="num">Founded</th><th>Price level</th><th>Phone</th></tr></thead>
         <tbody>
-${companies.filter((c) => c.type === 'local').map((c) => `          <tr><td><a href="/companies/${c.slug}/">${esc(c.name)}</a></td><td>${esc(c.city)}</td><td class="num">${c.founded ?? 'Not stated'}</td><td>${c.tier ? `${tier(c.tier)} ${tierText(c.tier)}` : 'By quote'}</td><td>${c.phone ? `<a href="tel:+1${c.phone}">${phone(c.phone)}</a>` : 'See profile'}</td></tr>`).join('\n')}
+${companies.filter((c) => c.type === 'local' && c.source !== 'ae').map((c) => `          <tr><td><a href="/companies/${c.slug}/">${esc(c.name)}</a></td><td>${esc(c.city)}</td><td class="num">${c.founded ?? 'Not stated'}</td><td>${c.tier ? `${tier(c.tier)} ${tierText(c.tier)}` : 'By quote'}</td><td>${c.phone ? `<a href="tel:+1${c.phone}">${phone(c.phone)}</a>` : 'See profile'}</td></tr>`).join('\n')}
         </tbody>
       </table>
     </div>
@@ -352,7 +353,7 @@ write('index.html', page({
 // ---------- Company profiles ----------
 for (const c of companies) {
   const others = companies.filter((o) => o.slug !== c.slug && o.type === c.type).slice(0, 5);
-  const hasStreet = /\d/.test(c.address || '');
+  const hasStreet = /\d/.test(c.address || '') && !/PO Box/i.test(c.address || '');
   const body = `
 <section class="page-head">
   <div class="wrap">
@@ -368,8 +369,8 @@ for (const c of companies) {
       <p>${esc(c.about)}</p>
       <dl class="facts" style="margin-top:2rem">
         <div><dt>Based in</dt><dd>${esc(c.city)} <span class="badge badge-${c.type}">${TYPES[c.type].label}</span></dd></div>
-        <div><dt>Founded</dt><dd>${c.founded ?? 'Not publicly stated'}</dd></div>
-        <div><dt>Price level</dt><dd>${c.tier ? `${tier(c.tier)} ${tierText(c.tier)}. ${esc(c.tierNote)}.` : 'Quotes per project; no public pricing found.'}</dd></div>
+        <div><dt>Founded</dt><dd>${c.founded ?? (c.source === 'ae' ? 'Not reviewed yet' : 'Not publicly stated')}</dd></div>
+        <div><dt>Price level</dt><dd>${c.tier ? `${tier(c.tier)} ${tierText(c.tier)}. ${esc(c.tierNote)}.` : (c.source === 'ae' ? 'Not reviewed yet. Ask for the price per watt in writing.' : 'Quotes per project; no public pricing found.')}</dd></div>
         <div><dt>Austin Energy rebate</dt><dd>${c.aeListed ? "Listed as a participating contractor on Austin Energy's site (page dated April 2025), so it can file for the $2,500 rebate. Check again before you sign." : "Not on Austin Energy's participating contractor list when we checked on 17 November 2026, so it cannot file for the $2,500 rebate."}</dd></div>
         <div><dt>Services</dt><dd>${c.services.map(esc).join(', ')}</dd></div>
         ${c.ratings.length ? `<div><dt>Ratings elsewhere</dt><dd>${c.ratings.map(esc).join('<br>')}</dd></div>` : ''}
@@ -381,7 +382,7 @@ for (const c of companies) {
           <li>Get the total price and the price per watt in writing, and compare with at least two other Austin solar companies.</li>
           <li>Ask who installs the system and how long the workmanship warranty runs.</li>
         </ul>
-        <p class="note">Ratings are quoted from the named third-party sites as of ${UPDATED_TEXT} and may have changed.</p>
+        ${c.ratings.length ? `<p class="note">Ratings are quoted from the named third-party sites as of ${UPDATED_TEXT} and may have changed.</p>` : ''}
       </div>
     </div>
     <aside>
@@ -398,7 +399,7 @@ for (const c of companies) {
         ${c.url ? `<a class="btn btn-line" href="${c.url}" rel="noopener nofollow">Visit website</a>` : ''}
         ${hasStreet ? `<a class="btn btn-line" href="${mapUrl(c)}" rel="noopener nofollow">Open in Google Maps</a>` : ''}
       </div>
-      ${others.length ? `<h2 style="font-size:1.3rem;margin:2rem 0 0.8rem">More ${TYPES[c.type].label.toLowerCase()} companies</h2>
+      ${others.length ? `<h2 style="font-size:1.3rem;margin:2rem 0 0.8rem">More companies: ${TYPES[c.type].label}</h2>
       <ul class="more-list">${others.map((o) => `<li><a href="/companies/${o.slug}/">${esc(o.name)}</a></li>`).join('')}</ul>` : ''}
       <p style="margin-top:1.5rem"><a href="/#directory">All solar companies in Austin</a></p>
     </aside>
@@ -472,7 +473,7 @@ write('solar-cost-austin/index.html', page({
       <li>Receive a letter of intent from Austin Energy before installation starts.</li>
       <li>Pass Austin Energy's final inspection.</li>
     </ol>
-    <p>Austin Energy recommends getting at least three estimates from different participating contractors. The current list is on <a href="https://austinenergy.com/green-power/solar-solutions/participating-solar-contractors" rel="noopener">austinenergy.com</a>. When we checked on 17 November 2026 it named about 53 firms. 15 of the 29 companies in this directory are on it, and each profile says whether it is.</p>
+    <p>Austin Energy recommends getting at least three estimates from different participating contractors. The current list is on <a href="https://austinenergy.com/green-power/solar-solutions/participating-solar-contractors" rel="noopener">austinenergy.com</a>. When we checked on 17 November 2026 it named ${AE_TOTAL} firms. ${companies.filter((c) => c.aeListed).length} of the ${companies.length} companies in this directory are on it, and each profile says whether it is.</p>
 
     <h2>Value of Solar instead of net metering</h2>
     <p>Austin Energy does not use traditional net metering. It credits the electricity your system produces at a set Value of Solar rate, which installers reported at about 9.9 cents per kWh in 2026. The rate is reviewed periodically, so check Austin Energy's current rate schedule before estimating your savings.</p>
@@ -514,6 +515,7 @@ write('about/index.html', page({
     <p>Companies are included when public sources show that they install solar in Austin and give enough detail to describe them fairly. Companies based in the Austin area are shown first, followed by Central Texas, statewide and national providers.</p>
     <h2>Where the information comes from</h2>
     <p>Founding years, addresses, phone numbers, services and ratings come from company websites and from public profiles on EnergySage, SolarReviews, EcoWatch, ConsumerAffairs, Solar Power World and Google. Ratings are quoted with their source and are not our own.</p>
+    <p>Companies marked as not yet reviewed come from Austin Energy's list of participating solar contractors, copied on 17 November 2026. For those, the directory shows only what that list states: address, phone number and whether they install residential or commercial systems. Details are added as each company is reviewed.</p>
     <h2>How price levels are set</h2>
     <p>Most installers do not publish prices. A price level appears only where a company publishes per-watt pricing or states its own positioning, and each profile says what the level is based on. Everything else is marked as priced by quote.</p>
     <h2>Independence</h2>
