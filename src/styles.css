@@ -274,3 +274,54 @@ table.marks td:not(:first-child), table.marks th:not(:first-child) { text-align:
 .area-links { padding-left: 1.2rem; }
 .area-links li { margin-bottom: 0.4rem; }
 .area-guides { font-size: 0.95rem; margin-top: 0.6rem; }
+
+/* Solar calculator */
+.section-tight { padding-block: clamp(2rem, 5vw, 3.5rem); }
+.sc { display: grid; gap: 1.5rem; border: 2px solid var(--ink); border-radius: 18px; overflow: hidden; background: #fff; }
+@media (min-width: 900px) { .sc { grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: 0; } }
+.sc-in { padding: clamp(1.2rem, 3vw, 2rem); display: grid; gap: 1.1rem; align-content: start; }
+.sc-title { font-size: 1.4rem; }
+.field { display: grid; gap: 0.35rem; }
+.field > span { font-size: 0.95rem; font-weight: 600; }
+.field small { font-size: 0.86rem; color: var(--ink-soft); }
+.field input[type="number"], .field select { font: inherit; font-size: 1rem; color: var(--ink); width: 100%; padding: 0.6rem 0.75rem; border: 2px solid var(--line); border-radius: 10px; background: #fff; }
+.field input:focus, .field select:focus { outline: none; border-color: var(--ink); }
+.field input[type="range"] { width: 100%; accent-color: var(--ink); height: 2rem; }
+.field strong { font-family: var(--display); font-size: 1.25rem; }
+.field-row { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); }
+.check { display: flex; gap: 0.6rem; align-items: flex-start; font-size: 0.97rem; cursor: pointer; }
+.check input { width: 1.15rem; height: 1.15rem; margin-top: 0.15rem; accent-color: var(--ink); flex: none; }
+.link-btn { font: inherit; color: var(--ink); background: none; border: 0; padding: 0; text-decoration: underline; cursor: pointer; }
+.sc-adv { border-top: 1px solid var(--line); padding-top: 0.9rem; }
+.sc-adv summary { cursor: pointer; font-weight: 700; margin-bottom: 0.8rem; }
+.sc-adv .note { margin: 0.6rem 0 0; }
+.sc[data-mode="vos"] [data-show="split"], .sc[data-mode="split"] [data-show="vos"], .sc:not([data-utility="ae"]) [data-show="ae"] { display: none; }
+.sc-out { background: var(--sky); padding: clamp(1.2rem, 3vw, 2rem); }
+.sc-kicker { font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft); margin: 0; }
+.sc-big { font-family: var(--display); font-weight: 800; font-size: clamp(2.6rem, 6vw, 3.6rem); line-height: 1; margin: 0.2rem 0 0.4rem; }
+.sc-sub { margin-bottom: 1.2rem; color: var(--ink-soft); }
+.sc-figs { margin: 0 0 1rem; display: grid; gap: 0; border-top: 2px solid var(--ink); }
+.sc-figs > div { display: grid; grid-template-columns: minmax(8rem, 0.9fr) 1.1fr; gap: 0 1rem; padding: 0.7rem 0; border-bottom: 1px solid var(--line); }
+.sc-figs dt { font-size: 0.95rem; color: var(--ink-soft); grid-row: span 2; }
+.sc-figs dd { margin: 0; font-family: var(--display); font-weight: 700; font-size: 1.3rem; font-variant-numeric: tabular-nums; }
+.sc-figs dd.sub { font-family: var(--body); font-weight: 400; font-size: 0.86rem; color: var(--ink-soft); }
+.sc-figs dd.sub ul { list-style: none; padding: 0; margin: 0.2rem 0 0; }
+.sc-figs .sc-key dd:not(.sub) { font-size: 1.6rem; }
+.sc-figs .sc-key dt { color: var(--ink); font-weight: 600; }
+.pay-bar { display: block; position: relative; height: 10px; border-radius: 5px; background: #fff; margin-top: 0.45rem; overflow: hidden; }
+.pay-bar span { position: absolute; inset: 0 auto 0 0; width: var(--pay, 45%); background: var(--sun); border-right: 3px solid var(--ink); transition: width 0.2s; }
+.pay-bar.is-over span { background: #f2b8a6; }
+.pay-scale { display: flex; justify-content: space-between; font-size: 0.78rem; margin-top: 0.15rem; }
+.sc-notes p { font-size: 0.92rem; background: #fff; border-left: 4px solid var(--sun); border-radius: 8px; padding: 0.6rem 0.8rem; margin: 0 0 0.6rem; max-width: none; }
+.sc-actions { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1rem; }
+.figures-3 { margin: 1rem 0 1.5rem; }
+@media (min-width: 760px) { .figures-3 { grid-template-columns: repeat(3, 1fr); } }
+
+/* Guides grid on the home page */
+.guides { list-style: none; padding: 0; margin: 0; display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr)); }
+.guides a { display: block; height: 100%; text-decoration: none; background: #fff; border: 2px solid var(--line); border-radius: 16px; padding: 1.2rem 1.3rem; }
+.guides a:hover { border-color: var(--ink); }
+.guides strong { display: block; font-family: var(--display); font-size: 1.15rem; margin-bottom: 0.3rem; }
+.guides span { color: var(--ink-soft); font-size: 0.95rem; }
+.guides .is-tool a { background: var(--ink); border-color: var(--ink); color: #fff; }
+.guides .is-tool span { color: #dfe6f7; }
