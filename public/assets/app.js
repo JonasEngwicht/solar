@@ -7,8 +7,16 @@
   var sort = document.querySelector('[data-sort]');
   var count = document.querySelector('[data-count]');
   var empty = document.querySelector('[data-empty]');
-  var state = { type: 'all', service: 'all', area: 'all', q: '' };
+  var more = document.querySelector('[data-more]');
+  var resets = document.querySelectorAll('[data-reset]');
+  var LIMIT = 20;
+  var state = { type: 'all', service: 'all', area: 'all', ae: 'all', q: '' };
+  var expanded = false;
   var map = null, markers = [];
+
+  function filtered() {
+    return state.type !== 'all' || state.service !== 'all' || state.area !== 'all' || state.ae !== 'all' || state.q !== '';
+  }
 
   function apply() {
     var shown = 0;
@@ -16,13 +24,20 @@
       var ok =
         (state.type === 'all' || row.dataset.type === state.type) &&
         (state.area === 'all' || row.dataset.area === state.area) &&
+        (state.ae === 'all' || row.dataset.ae === '1') &&
         (state.service === 'all' || row.dataset.services.indexOf('|' + state.service + '|') !== -1) &&
         (!state.q || row.dataset.text.indexOf(state.q) !== -1);
       row.hidden = !ok;
       if (ok) shown++;
     });
-    count.textContent = shown === 1 ? '1 company shown' : shown + ' companies shown';
+    // The full list is long: show the first 20 until the visitor filters or asks for all of them.
+    var collapse = !!more && !filtered() && !expanded && rows.length > LIMIT;
+    list.classList.toggle('is-collapsed', collapse);
+    if (more) more.hidden = !collapse;
+    if (collapse) count.textContent = 'Showing ' + LIMIT + ' of ' + rows.length + ' companies';
+    else count.textContent = shown === 1 ? '1 company' : shown + ' companies';
     empty.hidden = shown !== 0;
+    resets.forEach(function (b) { if (!empty.contains(b)) b.hidden = !filtered(); });
   }
 
   function order() {
@@ -59,26 +74,56 @@
     focusMap();
   }
 
+  function setQuery(q) {
+    state.q = q.trim().toLowerCase();
+    if (search && search.value !== q) search.value = q;
+    apply();
+  }
+
   document.querySelectorAll('[data-filter]').forEach(function (btn) {
     btn.addEventListener('click', function () {
       var group = btn.dataset.filter;
       if (group === 'area') return setArea(btn.dataset.value);
+      if (group === 'ae') {
+        // A single on/off chip; it shares the row with the service chips but filters independently.
+        state.ae = state.ae === 'all' ? '1' : 'all';
+        btn.setAttribute('aria-pressed', String(state.ae === '1'));
+        return apply();
+      }
       state[group] = btn.dataset.value;
       setPressed(group, btn.dataset.value);
       apply();
     });
   });
-  search.addEventListener('input', function () { state.q = search.value.trim().toLowerCase(); apply(); });
-  sort.addEventListener('change', order);
-  var reset = document.querySelector('[data-reset]');
-  if (reset) reset.addEventListener('click', function () {
-    state = { type: 'all', service: 'all', area: 'all', q: '' };
-    search.value = '';
-    ['type', 'service', 'area'].forEach(function (g) { setPressed(g, 'all'); });
-    apply();
-    focusMap();
+  if (search) search.addEventListener('input', function () { setQuery(search.value); });
+  if (sort) sort.addEventListener('change', order);
+  if (more) more.querySelector('button').addEventListener('click', function () { expanded = true; apply(); });
+  resets.forEach(function (reset) {
+    reset.addEventListener('click', function () {
+      state = { type: 'all', service: 'all', area: 'all', ae: 'all', q: '' };
+      if (search) search.value = '';
+      ['type', 'service', 'area'].forEach(function (g) { setPressed(g, 'all'); });
+      document.querySelectorAll('[data-filter="ae"]').forEach(function (b) { b.setAttribute('aria-pressed', 'false'); });
+      apply();
+      focusMap();
+    });
   });
-  apply();
+
+  // The search box in the hero and ?q= links both feed the directory search.
+  var hero = document.querySelector('[data-hero-search]');
+  if (hero) hero.addEventListener('submit', function (e) {
+    e.preventDefault();
+    setQuery(hero.querySelector('input').value);
+    document.getElementById('directory').scrollIntoView();
+    if (search) search.focus({ preventScroll: true });
+  });
+  var initial = '';
+  try { initial = new URLSearchParams(location.search).get('q') || ''; } catch (e) {}
+  if (initial) {
+    setQuery(initial);
+    if (hero) hero.querySelector('input').value = initial;
+    document.getElementById('directory').scrollIntoView();
+  } else apply();
 
   function initMap() {
     var el = document.getElementById('map');

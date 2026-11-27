@@ -35,6 +35,11 @@ export default {
     const res = await env.ASSETS.fetch(request);
     const out = new Response(res.body, res);
     for (const [k, v] of Object.entries(SECURITY_HEADERS)) out.headers.set(k, v);
+    // Stylesheet, scripts and fonts are requested with a content hash (?v=...), so browsers may keep them for a year.
+    // Other assets (map library, images) get a day; pages keep the default and are revalidated on every visit.
+    if (res.ok && url.pathname.startsWith('/assets/')) {
+      out.headers.set('Cache-Control', url.searchParams.has('v') ? 'public, max-age=31536000, immutable' : 'public, max-age=86400');
+    }
     return out;
   },
 };

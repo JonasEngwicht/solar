@@ -29,4 +29,26 @@ Drop a logo as `logos-src/<slug>.png|jpg|webp` (slug = company slug), run `pytho
 `build.mjs` imports it for the worked examples on the guide pages, and `src/calculator.js` imports it in the browser
 on `/solar-calculator-austin/`, so the published numbers and the tool always agree. Update a rate there and rebuild.
 
-Guide pages: `/solar-calculator-austin/`, `/solar-incentives-austin/`, `/is-solar-worth-it-austin/`, `/solar-battery-austin/`.
+## Pages
+
+- Directory: `/` (filters, map, comparison table), one profile per company under `/companies/<slug>/`
+- Areas: `/solar-companies/<area>/` (defined in `AREA_PAGES` in `build.mjs`)
+- Services: `/commercial-solar-austin/`, `/solar-repair-austin/` (lists built from the `services` field)
+- Guides: `/solar-calculator-austin/`, `/solar-cost-austin/`, `/solar-incentives-austin/`, `/austin-energy-solar-rebate/`,
+  `/value-of-solar-austin-energy/`, `/is-solar-worth-it-austin/`, `/solar-battery-austin/`, `/biggest-solar-companies-austin/`
+
+Profiles of companies that have not been reviewed yet (`"noindex": true` in the data) stay out of the sitemap and carry
+`noindex`. Add sourced details and remove the flag to let Google index them.
+
+## How the build helps search engines
+
+- Every page gets one JSON-LD graph: the site, the page (guides as `Article`), breadcrumbs, FAQ and, on profiles, the business.
+- "Updated" dates are per page. `tools/lastmod.json` stores a hash of each page; a page keeps its date until its HTML changes,
+  and the same date goes into the sitemap. Commit that file with every build.
+- Stylesheet, scripts and fonts are linked with a content hash (`?v=...`); `src/worker.js` lets browsers cache those for a year.
+- Guides pass `article: { published, toc }` to `page()` for the contents list and the "Updated" line, and `related: [...]`
+  for the links at the end (keys of `GUIDE`).
+
+## Fonts
+
+`src/fonts/*.woff2` are served first, the `.woff` files are the fallback. Both are the same variable fonts.
